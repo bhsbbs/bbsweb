@@ -195,6 +195,8 @@
             z-index: 1;
             pointer-events: none;
             display: block;
+            /* 동영상을 살짝 어둡게 처리해서 위 텍스트 가독성 향상 */
+            filter: brightness(0.8) contrast(1.05);
         }
 
 
@@ -1712,12 +1714,12 @@
         </div>
 
         <!-- BBS Introduction Container -->
-        <div class="bbs-intro-container" data-aos="fade-up" data-aos-duration="800">
+        <div class="bbs-intro-container">
             <div class="bbs-intro-content">
-                <div class="bbs-intro-image" data-aos="fade-right" data-aos-duration="900">
+                <div class="bbs-intro-image">
                     <img src="3d.png" alt="BBS 3D Star" class="bbs-star-image">
                 </div>
-                <div class="bbs-intro-text-wrapper" data-aos="fade-left" data-aos-duration="900" data-aos-delay="120">
+                <div class="bbs-intro-text-wrapper">
                     <h2 class="bbs-intro-title">차원이 다른 방송부</h2>
                     <p class="bbs-intro-text">
                         BBS에서는 당신의 활동을 지원하기 위한 다양한 장비<span class="bbs-asterisk">*</span>와 열정이 넘치는 부원들이 활동하고 있습니다.
