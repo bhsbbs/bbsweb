@@ -15,6 +15,13 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'SlowGothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2') format('woff2');
+            font-weight: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -170,7 +177,7 @@
             justify-content: center;
             align-items: center;
             height: 80vh;
-            padding-top: 2vh;
+            padding-top: 3vh;
             position: relative;
         }
 
@@ -181,7 +188,7 @@
             max-width: 1820px;
             height: 70vh;
             min-height: 420px;
-            border-radius: 6.8vw;
+            border-radius: 5.9vw;
             background: linear-gradient(180deg, #4a82c3 0%, #5f4397 100%);
             overflow: hidden;
         }
@@ -250,19 +257,20 @@
             padding: 0 28px;
             border-radius: 999px;
             border: 1px solid rgba(255, 255, 255, 0.28);
-            /* 기존 컬러를 살리되 더 투명하게, 밝은 느낌으로 */
             background:
-                linear-gradient(135deg, rgba(111, 168, 232, 0.92) 0%, rgba(95, 67, 151, 0.92) 100%);
+                linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%);
             box-shadow:
-                0 14px 35px rgba(79, 67, 151, 0.45),
+                0 14px 35px rgba(0, 0, 0, 0.45),
                 inset 0 1px 0 rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(14px) saturate(150%);
+            -webkit-backdrop-filter: blur(14px) saturate(150%);
             color: #f5f7ff;
             font-size: clamp(14px, 1.6vw, 18px);
             font-family: 'Pretendard', sans-serif;
             font-weight: 600;
             letter-spacing: 0.03em;
             cursor: pointer;
-            transition: transform 0.2s ease-out, box-shadow 0.25s ease-out, background 0.25s ease-out;
+            transition: transform 0.2s ease-out, box-shadow 0.25s ease-out, background 0.25s ease-out, border-color 0.25s ease-out;
             white-space: nowrap;
             position: relative;
             overflow: hidden;
@@ -295,21 +303,6 @@
 
         .main-btn:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow:
-                0 18px 45px rgba(79, 67, 151, 0.58),
-                0 0 0 1px rgba(130, 173, 255, 0.7);
-            background:
-                linear-gradient(135deg, rgba(140, 190, 255, 0.98) 0%, rgba(183, 122, 255, 0.98) 100%);
-        }
-
-        .main-btn:hover::before {
-            opacity: 0.5;
-            transform: translate3d(0, 0, 0) scale(1);
-        }
-
-        .main-btn:hover::after {
-            transform: translateX(4px) translateY(-2px);
-            opacity: 1;
         }
 
         .main-btn:active {
@@ -410,18 +403,40 @@
 
         .footer-info {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             position: relative;
             color: white;
             font-family: 'Pretendard', sans-serif;
         }
 
+        .footer-info-text {
+            display: flex;
+            flex-direction: column;
+            margin-top: 13px;
+            margin-left: 20px;
+            align-items: flex-start;
+        }
+
+
+        .footer-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
         .footer-info .title {
             font-size: clamp(18px, 2vw, 24px);
             font-weight: 700;
-            margin-bottom: 8px;
             letter-spacing: 0.5px;
             font-family: 'BEANPOLE_2020', sans-serif;
+        }
+
+        .footer-badge {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            object-fit: contain;
         }
 
         .footer-info .address {
@@ -436,6 +451,41 @@
             align-items: center;
             flex-shrink: 0;
             margin-left: auto;
+        }
+
+        /* Footer Marquee */
+        .footer-marquee {
+            width: 100%;
+            background: rgb(115, 0, 255);
+            padding: 8px 0;
+            overflow: hidden;
+        }
+
+        .footer-marquee-inner {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            width: max-content;
+            animation: footerMarquee 50s linear infinite;
+        }
+
+        .footer-marquee-text {
+            display: inline-block;
+            font-family: 'SlowGothic';
+            font-size: clamp(12px, 1.4vw, 15px);
+            letter-spacing: 0.2em;
+            color: rgb(255, 255, 255);
+            padding: 0;
+            margin-right: 2.5rem;
+        }
+
+        @keyframes footerMarquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .family-select {
@@ -619,11 +669,11 @@
             transform: scale(0.98);
         }
 
-        /* YouTube RSS Container Styles */
         .youtube-container {
             width: 100%;
             padding: 40px 3%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+            border-radius: 2vw 2vw 0 0;
         }
 
         .youtube-title {
@@ -827,6 +877,43 @@
             gap: 26px;
         }
 
+        .bbs-intro-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(111, 168, 232, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: rgba(222, 231, 255, 0.9);
+            font-size: 12px;
+            font-family: 'Pretendard', sans-serif;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .bbs-intro-pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #6fa8e8;
+            box-shadow: 0 0 12px rgba(111, 168, 232, 0.8);
+        }
+
+        /* Scroll reveal animation (요즘식 부드러운 등장) */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(45px) scale(0.98);
+            transition: opacity 0.9s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .scroll-animate.in-view {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
         .bbs-intro-title {
             font-size: clamp(36px, 5vw, 68px);
             color: white;
@@ -844,6 +931,39 @@
             font-family: 'Pretendard', sans-serif;
             margin: 0;
             letter-spacing: 0.02em;
+        }
+
+        .bbs-intro-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 12px;
+        }
+
+        .bbs-intro-highlight-card {
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: radial-gradient(circle at 0% 0%, rgba(32, 20, 49, 0.24), rgba(10, 10, 20, 0.6));
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(18px);
+        }
+
+        .bbs-intro-highlight-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #e2e7ff;
+            margin-bottom: 6px;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .bbs-intro-highlight-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: rgba(230, 235, 255, 0.9);
+            font-family: 'Pretendard', sans-serif;
         }
 
         .bbs-asterisk {
@@ -1004,7 +1124,7 @@
 
             .bbs-intro-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 36px;
             }
 
             .bbs-intro-title {
@@ -1017,6 +1137,15 @@
 
             .bbs-star-image {
                 max-width: 300px;
+            }
+
+            .bbs-intro-highlights {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .bbs-intro-highlight-card {
+                padding: 14px 14px;
             }
 
             .youtube-container {
@@ -1071,12 +1200,12 @@
 
         @media (max-width: 768px) {
             .bbs-intro-container {
-                padding: 50px 2%;
+                padding: 40px 4% 45px;
             }
 
             .bbs-intro-content {
                 grid-template-columns: 1fr;
-                gap: 35px;
+                gap: 26px;
             }
 
             .bbs-intro-title {
@@ -1084,11 +1213,21 @@
             }
 
             .bbs-intro-text {
-                font-size: clamp(13px, 1.4vw, 16px);
+                font-size: clamp(13px, 3.5vw, 16px);
             }
 
             .bbs-star-image {
-                max-width: 280px;
+                max-width: 240px;
+            }
+
+            .bbs-intro-highlights {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 10px;
+            }
+
+            .bbs-intro-highlight-card {
+                padding: 12px 13px;
             }
 
             .youtube-container {
@@ -1221,8 +1360,18 @@
                 margin-left: 0;
             }
 
+            .footer-title-wrapper {
+                flex-direction: column;
+                justify-content: center;
+            }
+
             .footer-info .title {
                 font-size: clamp(16px, 4vw, 20px);
+            }
+
+            .footer-badge {
+                width: 70px;
+                height: 70px;
             }
 
             .footer-info .address {
@@ -1444,6 +1593,11 @@
                 margin-bottom: 6px;
             }
 
+            .footer-badge {
+                width: 60px;
+                height: 60px;
+            }
+
             .footer-info .address {
                 font-size: clamp(11px, 3vw, 12px);
             }
@@ -1451,12 +1605,12 @@
 
         @media (max-width: 480px) {
             .bbs-intro-container {
-                padding: 40px 2%;
+                padding: 32px 4% 36px;
             }
 
             .bbs-intro-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 22px;
             }
 
             .bbs-intro-title {
@@ -1464,8 +1618,8 @@
             }
 
             .bbs-intro-text {
-                font-size: clamp(12px, 1.2vw, 14px);
-                line-height: 1.6;
+                font-size: clamp(12px, 3.4vw, 14px);
+                line-height: 1.5;
             }
 
             .bbs-equipment-note {
@@ -1473,7 +1627,17 @@
             }
 
             .bbs-star-image {
-                max-width: 220px;
+                max-width: 210px;
+            }
+
+            .bbs-intro-highlights {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-top: 8px;
+            }
+
+            .bbs-intro-highlight-card {
+                padding: 11px 12px;
             }
 
             .main-buttons {
@@ -1716,17 +1880,24 @@
         <!-- BBS Introduction Container -->
         <div class="bbs-intro-container">
             <div class="bbs-intro-content">
-                <div class="bbs-intro-image">
+                <div class="bbs-intro-image scroll-animate" data-scroll-animate>
                     <img src="3d.png" alt="BBS 3D Star" class="bbs-star-image">
                 </div>
-                <div class="bbs-intro-text-wrapper">
-                    <h2 class="bbs-intro-title">차원이 다른 방송부</h2>
+                <div class="bbs-intro-text-wrapper scroll-animate" data-scroll-animate>
+                    <h2 class="bbs-intro-title">차원이 다른 방송국</h2>
                     <p class="bbs-intro-text">
-                        BBS에서는 당신의 활동을 지원하기 위한 다양한 장비<span class="bbs-asterisk">*</span>와 열정이 넘치는 부원들이 활동하고 있습니다.
+                        BBS에서는 당신의 활동을 지원하기 위해 열정이 넘치는 부원들이 활동하고 있습니다.
                     </p>
-                    <p class="bbs-equipment-note">
-                        <span class="bbs-note-asterisk">*</span>Qu-16, DM3, EVOLVE-50, EOS r8(예정), r50v(예정), rtx 4050gpu laptop, 개인 1tb 외장 SSD 지원
-                    </p>
+                    <div class="bbs-intro-highlights">
+                        <div class="bbs-intro-highlight-card">
+                            <div class="bbs-intro-highlight-title">EQUIPMENT</div>
+                            <div class="bbs-intro-highlight-text">Qu-16, DM3, EVOLVE-50, RS3 Mini, R8(예정)등 현업에 쓰이는 장비로 현장을 운영합니다.</div>
+                        </div>
+                        <div class="bbs-intro-highlight-card">
+                            <div class="bbs-intro-highlight-title">EXPERIENCE</div>
+                            <div class="bbs-intro-highlight-text">당신이 하고 싶은 것이라면 무엇이든지 할 수 있습니다.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1739,12 +1910,31 @@
             </div>
         </div>
 
+        <!-- Footer marquee -->
+        <div class="footer-marquee">
+            <div class="footer-marquee-inner">
+                <span class="footer-marquee-text">
+                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+                </span>
+                <span class="footer-marquee-text">
+                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+                </span>
+            </div>
+        </div>
+
         <!-- Footer -->
         <footer class="footer-overlay">
             <!-- Footer Info -->
             <div class="footer-info">
-                <div class="title">방어진고등학교 방송부</div>
+                <img src="badge.png" alt="BBS Badge" class="footer-badge">
+                <div class="footer-info-text">
+                <div class="footer-title-wrapper">
+                    <div class="title">방어진고등학교 방송부</div>
+                </div>
                 <div class="address">울산광역시 동구 학문로 50 (우 : 44054) 2층</div>
+                </div>
             </div>
 
             <!-- Family Sites -->
@@ -2074,10 +2264,22 @@
             videoGrid.innerHTML = `<div style="color: #ff6b6b; grid-column: 1/-1; text-align: center; padding: 40px;">${message}</div>`;
         }
 
-        // 페이지 로드 시 영상과 부서 정보 불러오기
+        // 페이지 로드 시 영상/부서 정보 및 스크롤 애니메이션 초기화
         document.addEventListener('DOMContentLoaded', function() {
             loadYouTubeVideos();
             renderDepartments();
+
+            // Scroll reveal for BBS intro
+            const scrollTargets = document.querySelectorAll('[data-scroll-animate]');
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            scrollTargets.forEach(el => io.observe(el));
         });
     </script>
 </body>
