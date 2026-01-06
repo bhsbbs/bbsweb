@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>31기 합격자 발표</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <style>
+        @font-face {
+            font-family: 'BEANPOLE_2020';
+            src: url('https://cdn.jsdelivr.net/gh/wooin21/web/fonts/etc/BEANPOLE2020-Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'BEANPOLE_2020', sans-serif;
+            overflow-x: hidden;
+            background: url('background.png') center/cover no-repeat fixed;
+            overflow-y: auto;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.95) 0%, rgba(40, 30, 60, 0.95) 100%);
+            padding: 60px 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(79, 67, 151, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: clamp(24px, 5vw, 32px);
+            background: linear-gradient(135deg, #6fa8e8 0%, #ffffff 50%, #5f4397 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-family: 'Pretendard', sans-serif;
+            letter-spacing: -0.3px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            transition: all 0.3s ease;
+            font-family: 'Pretendard', sans-serif;
+            backdrop-filter: blur(10px);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        input:focus {
+            border-color: rgba(111, 168, 232, 0.6);
+            background: rgba(111, 168, 232, 0.1);
+            outline: none;
+            box-shadow: 0 0 20px rgba(111, 168, 232, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #6fa8e8 0%, #5f4397 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Pretendard', sans-serif;
+            margin-top: 20px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 20px rgba(79, 67, 151, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(79, 67, 151, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #7eb4f0 0%, #6f53a7 100%);
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(79, 67, 151, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: calc(100% - 30px);
+                padding: 40px 25px;
+                margin: 20px auto;
+            }
+
+            h1 {
+                margin-bottom: 25px;
+                font-size: clamp(20px, 4vw, 28px);
+            }
+
+            input {
+                padding: 12px 16px;
+                font-size: 16px;
+            }
+
+            button {
+                padding: 14px;
+                font-size: 15px;
+            }
+
+            .footer {
+                margin-top: 20px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>31기 합격자 발표</h1>
+        
+        <div class="input-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" placeholder="예: 전서현">
+        </div>
+        
+        <div class="input-group">
+            <label for="studentId">학번</label>
+            <input type="text" id="studentId" placeholder="예: 10101">
+        </div>
+
+        <button id="searchBtn">결과 확인하기</button>
+        
+        <div class="footer">
+            결과는 새 탭으로 열립니다.<br>
+        </div>
+    </div>
+
+    <script type="module">
+        // 1. 필요한 도구만 가져오기 (getDoc, doc 사용)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } 
+            from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // ▼▼▼ 본인의 Firebase 설정값으로 덮어쓰세요 ▼▼▼
+        const firebaseConfig = {
+            apiKey: "AIzaSyAQzwnZX0XGJOvFMayWTZRT0EP1HoWAKdQ",
+            authDomain: "bbsforu-4cd31.firebaseapp.com",
+            projectId: "bbsforu-4cd31",
+            storageBucket: "bbsforu-4cd31.firebasestorage.app",
+            messagingSenderId: "126074653228",
+            appId: "1:126074653228:web:604687efe7628b793a9f89",
+            measurementId: "G-MR3NRQB9JP"
+        };
+        // ▲▲▲ 설정값 끝 ▲▲▲
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // 버튼 클릭 시 실행
+        document.getElementById('searchBtn').addEventListener('click', checkResult);
+
+        async function checkResult() {
+            const name = document.getElementById('name').value.trim(); // 공백 제거
+            const studentId = document.getElementById('studentId').value.trim();
+
+            if (!name || !studentId) {
+                alert("이름과 학번을 정확히 입력해주세요.");
+                return;
+            }
+
+            // 1. 새 탭 열기 (차단 방지)
+            const popup = window.open("", "_blank");
+
+            if (!popup) {
+                alert("팝업이 차단되었습니다. 주소창 옆의 팝업 차단 버튼을 눌러 해제해주세요.");
+                return;
+            }
+
+            // 2. 새 탭에 로딩 화면 표시
+            popup.document.write(`
+                <!DOCTYPE html>
+                <html lang="ko">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>31기 합격자 발표 - 조회 중...</title>
+                    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+                    <style>
+                        @font-face {
+                            font-family: 'BEANPOLE_2020';
+                            src: url('https://cdn.jsdelivr.net/gh/wooin21/web/fonts/etc/BEANPOLE2020-Light.woff') format('woff');
+                            font-weight: normal;
+                            font-style: normal;
+                        }
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+                        body { 
+                            font-family: 'BEANPOLE_2020', sans-serif; 
+                            display: flex; 
+                            justify-content: center; 
+                            align-items: center; 
+                            min-height: 100vh; 
+                            padding: 20px;
+                            background: linear-gradient(135deg, #0f0f1e 0%, #2d1b4e 100%);
+                            text-align: center;
+                        }
+                        .loader-container {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 30px;
+                        }
+                        .spinner { 
+                            width: 50px; 
+                            height: 50px; 
+                            border: 4px solid rgba(111, 168, 232, 0.2);
+                            border-top: 4px solid #6fa8e8;
+                            border-radius: 50%;
+                            animation: spin 1s linear infinite;
+                        }
+                        @keyframes spin {
+                            to { transform: rotate(360deg); }
+                        }
+                        .loader-text { 
+                            font-size: 18px; 
+                            color: rgba(255, 255, 255, 0.9);
+                            font-weight: 600;
+                            background: linear-gradient(135deg, #6fa8e8 0%, #5f4397 100%);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="loader-container">
+                        <div class="spinner"></div>
+                        <div class="loader-text">📡 데이터를 안전하게 조회하고 있습니다...</div>
+                    </div>
+                </body>
+                </html>
+            `);
+
+            try {
+                // 3. [보안 핵심] 학번+이름 조합으로 ID 직접 조회 (검색 아님!)
+                // 예: 사용자가 10101, 김방송 입력 -> "10101김방송" 문서를 찾음
+                const docId = studentId + name; 
+                const docRef = doc(db, "applicants", docId);
+                const docSnap = await getDoc(docRef);
+
+                let htmlContent = "";
+
+                if (docSnap.exists()) {
+                    // 문서가 존재함 (즉, 합격자 명단 or 지원자 명단에 있음)
+                    const data = docSnap.data();
+                    
+                    if (data.isPassed === true) {
+                        // 합격
+                        const dept = data.department ? data.department : "부서 미정";
+                        htmlContent = `
+                            <!DOCTYPE html>
+                            <html lang="ko">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>축하합니다! - 31기 합격자 발표</title>
+                                <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+                                <style>
+                                    @font-face {
+                                        font-family: 'BEANPOLE_2020';
+                                        src: url('https://cdn.jsdelivr.net/gh/wooin21/web/fonts/etc/BEANPOLE2020-Light.woff') format('woff');
+                                        font-weight: normal;
+                                        font-style: normal;
+                                    }
+                                    * { margin: 0; padding: 0; box-sizing: border-box; }
+                                    body {
+                                        font-family: 'BEANPOLE_2020', sans-serif;
+                                        background: linear-gradient(135deg, #0f0f1e 0%, #2d1b4e 100%);
+                                        min-height: 100vh;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        padding: 20px;
+                                    }
+                                    .container {
+                                        background: linear-gradient(135deg, rgba(20, 20, 30, 0.95) 0%, rgba(40, 30, 60, 0.95) 100%);
+                                        padding: 60px 40px;
+                                        border-radius: 24px;
+                                        backdrop-filter: blur(20px);
+                                        border: 1px solid rgba(255, 255, 255, 0.1);
+                                        box-shadow: 0 20px 60px rgba(79, 67, 151, 0.3);
+                                        text-align: center;
+                                        width: 100%;
+                                        max-width: 500px;
+                                        animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+                                    }
+                                    @keyframes slideUp {
+                                        from { opacity: 0; transform: translateY(30px); }
+                                        to { opacity: 1; transform: translateY(0); }
+                                    }
+                                    h2 {
+                                        background: linear-gradient(135deg, #6fa8e8 0%, #ffffff 50%, #5f4397 100%);
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                        background-clip: text;
+                                        margin-bottom: 30px;
+                                        font-size: clamp(28px, 5vw, 40px);
+                                        font-weight: 700;
+                                    }
+                                    .content {
+                                        font-size: 18px;
+                                        margin: 30px 0;
+                                        color: white;
+                                        font-family: 'Pretendard', sans-serif;
+                                        line-height: 1.8;
+                                    }
+                                    .name {
+                                        font-size: 24px;
+                                        font-weight: 700;
+                                        background: linear-gradient(135deg, #6fa8e8 0%, #a99dff 100%);
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                        background-clip: text;
+                                        margin-bottom: 15px;
+                                    }
+                                    .dept-badge {
+                                        display: inline-block;
+                                        margin: 20px 0;
+                                        background: linear-gradient(135deg, rgba(111, 168, 232, 0.2) 0%, rgba(95, 67, 151, 0.2) 100%);
+                                        border: 2px solid rgba(111, 168, 232, 0.4);
+                                        color: #6fa8e8;
+                                        padding: 15px 25px;
+                                        border-radius: 12px;
+                                        font-weight: 700;
+                                        font-size: 18px;
+                                        font-family: 'Pretendard', sans-serif;
+                                    }
+                                    .message {
+                                        font-size: 16px;
+                                        color: rgba(255, 255, 255, 0.8);
+                                        margin-top: 20px;
+                                    }
+                                    .footer {
+                                        font-size: 14px;
+                                        color: rgba(255, 255, 255, 0.6);
+                                        margin-top: 40px;
+                                        font-family: 'Pretendard', sans-serif;
+                                        line-height: 1.8;
+                                    }
+                                    button {
+                                        margin-top: 40px;
+                                        padding: 14px 40px;
+                                        background: #6fa8e8;
+                                        color: white;
+                                        border: none;
+                                        border-radius: 12px;
+                                        cursor: pointer;
+                                        font-size: 16px;
+                                        font-weight: 700;
+                                        font-family: 'Pretendard', sans-serif;
+                                    }
+                                    button:hover {
+                                        background: #5a95d4;
+                                    }
+                                </style>
+                            </head>
+                            <body>
+                                <div class="container">
+                                    <h2>🎉 축하합니다!</h2>
+                                    <div class="content">
+                                        <div class="name">${name}</div>
+                                        <p>학생은</p>
+                                        <div class="dept-badge">${dept}</div>
+                                        <p class="message">최종 합격하셨습니다.</p>
+                                    </div>
+                                    <div class="footer">
+                                        앞으로의 활동을 기대합니다!<br>
+                                        <span style="font-size: 12px; color: rgba(255, 255, 255, 0.5);">- 방송부 일동 -</span>
+                                    </div>
+                                    <button onclick="window.close()">확인</button>
+                                </div>
+                            </body>
+                            </html>
+                        `;
+                    } else {
+                        // 불합격
+                        htmlContent = `
+                            <!DOCTYPE html>
+                            <html lang="ko">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>안내 - 31기 합격자 발표</title>
+                                <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+                                <style>
+                                    @font-face {
+                                        font-family: 'BEANPOLE_2020';
+                                        src: url('https://cdn.jsdelivr.net/gh/wooin21/web/fonts/etc/BEANPOLE2020-Light.woff') format('woff');
+                                        font-weight: normal;
+                                        font-style: normal;
+                                    }
+                                    * { margin: 0; padding: 0; box-sizing: border-box; }
+                                    body {
+                                        font-family: 'BEANPOLE_2020', sans-serif;
+                                        background: linear-gradient(135deg, #0f0f1e 0%, #2d1b4e 100%);
+                                        min-height: 100vh;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        padding: 20px;
+                                    }
+                                    .container {
+                                        background: linear-gradient(135deg, rgba(20, 20, 30, 0.95) 0%, rgba(40, 30, 60, 0.95) 100%);
+                                        padding: 60px 40px;
+                                        border-radius: 24px;
+                                        backdrop-filter: blur(20px);
+                                        border: 1px solid rgba(255, 255, 255, 0.1);
+                                        box-shadow: 0 20px 60px rgba(79, 67, 151, 0.3);
+                                        text-align: center;
+                                        width: 100%;
+                                        max-width: 500px;
+                                        animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+                                    }
+                                    @keyframes slideUp {
+                                        from { opacity: 0; transform: translateY(30px); }
+                                        to { opacity: 1; transform: translateY(0); }
+                                    }
+                                    h2 {
+                                        background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                        background-clip: text;
+                                        margin-bottom: 30px;
+                                        font-size: clamp(28px, 5vw, 40px);
+                                        font-weight: 700;
+                                    }
+                                    .content {
+                                        font-size: 18px;
+                                        margin: 30px 0;
+                                        color: white;
+                                        font-family: 'Pretendard', sans-serif;
+                                        line-height: 1.8;
+                                    }
+                                    .name {
+                                        font-size: 24px;
+                                        font-weight: 700;
+                                        background: linear-gradient(135deg, #6fa8e8 0%, #a99dff 100%);
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                        background-clip: text;
+                                        margin-bottom: 15px;
+                                    }
+                                    .status-badge {
+                                        display: inline-block;
+                                        margin: 20px 0;
+                                        background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(255, 135, 135, 0.2) 100%);
+                                        border: 2px solid rgba(255, 107, 107, 0.4);
+                                        color: #ff8787;
+                                        padding: 15px 25px;
+                                        border-radius: 12px;
+                                        font-weight: 700;
+                                        font-size: 16px;
+                                        font-family: 'Pretendard', sans-serif;
+                                    }
+                                    .footer {
+                                        font-size: 14px;
+                                        color: rgba(255, 255, 255, 0.7);
+                                        margin-top: 40px;
+                                        font-family: 'Pretendard', sans-serif;
+                                        line-height: 1.8;
+                                    }
+                                    button {
+                                        margin-top: 40px;
+                                        padding: 14px 40px;
+                                        background: #6fa8e8;
+                                        color: white;
+                                        border: none;
+                                        border-radius: 12px;
+                                        cursor: pointer;
+                                        font-size: 16px;
+                                        font-weight: 700;
+                                        font-family: 'Pretendard', sans-serif;
+                                    }
+                                    button:hover {
+                                        background: #5a95d4;
+                                    }
+                                </style>
+                            </head>
+                            <body>
+                                <div class="container">
+                                    <h2>안내</h2>
+                                    <div class="content">
+                                        <div class="name">${name}</div>
+                                        <p>학생은 아쉽게도</p>
+                                        <div class="status-badge">이번 모집에 선발되지 못했습니다.</div>
+                                    </div>
+                                    <div class="footer">
+                                        지원해주신 열정에<br>
+                                        진심으로 감사드립니다.
+                                    </div>
+                                    <button onclick="window.close()">확인</button>
+                                </div>
+                            </body>
+                            </html>
+                        `;
+                    }
+                } else {
+                    // 문서가 없음 (정보 불일치)
+                    htmlContent = `
+                        <!DOCTYPE html>
+                        <html lang="ko">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>정보 확인 - 31기 합격자 발표</title>
+                            <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+                            <style>
+                                @font-face {
+                                    font-family: 'BEANPOLE_2020';
+                                    src: url('https://cdn.jsdelivr.net/gh/wooin21/web/fonts/etc/BEANPOLE2020-Light.woff') format('woff');
+                                    font-weight: normal;
+                                    font-style: normal;
+                                }
+                                * { margin: 0; padding: 0; box-sizing: border-box; }
+                                body {
+                                    font-family: 'BEANPOLE_2020', sans-serif;
+                                    background: linear-gradient(135deg, #0f0f1e 0%, #2d1b4e 100%);
+                                    min-height: 100vh;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    padding: 20px;
+                                }
+                                .container {
+                                    background: linear-gradient(135deg, rgba(20, 20, 30, 0.95) 0%, rgba(40, 30, 60, 0.95) 100%);
+                                    padding: 60px 40px;
+                                    border-radius: 24px;
+                                    backdrop-filter: blur(20px);
+                                    border: 1px solid rgba(255, 255, 255, 0.1);
+                                    box-shadow: 0 20px 60px rgba(79, 67, 151, 0.3);
+                                    text-align: center;
+                                    width: 100%;
+                                    max-width: 500px;
+                                    animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+                                }
+                                @keyframes slideUp {
+                                    from { opacity: 0; transform: translateY(30px); }
+                                    to { opacity: 1; transform: translateY(0); }
+                                }
+                                h2 {
+                                    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    background-clip: text;
+                                    margin-bottom: 30px;
+                                    font-size: clamp(28px, 5vw, 40px);
+                                    font-weight: 700;
+                                }
+                                .content {
+                                    font-size: 18px;
+                                    margin: 30px 0;
+                                    color: white;
+                                    font-family: 'Pretendard', sans-serif;
+                                    line-height: 1.8;
+                                }
+                                .info-badge {
+                                    display: inline-block;
+                                    margin: 20px 0;
+                                    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 237, 78, 0.2) 100%);
+                                    border: 2px solid rgba(255, 215, 0, 0.4);
+                                    color: #ffd700;
+                                    padding: 15px 25px;
+                                    border-radius: 12px;
+                                    font-weight: 700;
+                                    font-size: 15px;
+                                    font-family: 'Pretendard', sans-serif;
+                                }
+                                .hint {
+                                    font-size: 14px;
+                                    color: rgba(255, 255, 255, 0.7);
+                                    margin-top: 15px;
+                                    font-family: 'Pretendard', sans-serif;
+                                }
+                                .footer {
+                                    font-size: 13px;
+                                    color: rgba(255, 255, 255, 0.6);
+                                    margin-top: 40px;
+                                    font-family: 'Pretendard', sans-serif;
+                                    line-height: 1.8;
+                                }
+                                button {
+                                    margin-top: 40px;
+                                    padding: 14px 40px;
+                                    background: #6fa8e8;
+                                    color: white;
+                                    border: none;
+                                    border-radius: 12px;
+                                    cursor: pointer;
+                                    font-size: 16px;
+                                    font-weight: 700;
+                                    font-family: 'Pretendard', sans-serif;
+                                }
+                                button:hover {
+                                    background: #5a95d4;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class="container">
+                                <h2>⚠️ 정보 확인</h2>
+                                <div class="content">
+                                    <p>일치하는 지원자 정보가 없습니다.</p>
+                                    <div class="info-badge">이름과 학번을 확인하세요</div>
+                                    <div class="hint">
+                                        <p>• 띄어쓰기 없이 입력</p>
+                                        <p>• 성과 이름을 정확히</p>
+                                        <p>• 학번 앞에 0 포함</p>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    다시 확인 후 조회해주세요.
+                                </div>
+                                <button onclick="window.close()">확인</button>
+                            </div>
+                        </body>
+                        </html>
+                    `;
+                }
+
+                // 4. 탭 내용 업데이트
+                const newDoc = popup.document.open("text/html", "replace");
+                newDoc.write(htmlContent);
+                newDoc.close();
+
+            } catch (error) {
+                console.error("시스템 에러:", error);
+                popup.document.body.innerHTML = `
+                    <div>
+                        <h3 style="color:red;">시스템 오류</h3>
+                        <p>관리자에게 문의해주세요.</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
