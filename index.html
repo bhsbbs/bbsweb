@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,8 @@
     <meta property="og:image" content="https://bbs.mua.co.kr/ii.png">
     <!-- AOS Animation CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet preload" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
         @font-face {
             font-family: 'BEANPOLE_2020';
@@ -39,7 +41,7 @@
         body {
             font-family: 'BEANPOLE_2020', sans-serif;
             overflow-x: hidden;
-            background: url('background.png') center/cover no-repeat fixed;
+            background: url('background.webp') center/cover no-repeat fixed;
             overflow-y: auto;
             margin: 0;
             padding: 0;
@@ -59,27 +61,89 @@
         }
 
         /* header bar using flex */
+        /* Header Bar - Transparent by default */
         .header-bar {
             position: fixed;
             top: 0;
+            left: 50%;
+            /* Center horizontally */
+            transform: translateX(-50%);
+            /* Center horizontally */
             width: 100%;
+            max-width: 1920px;
+            /* Restore max-width constraint */
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            padding: 8px 2%;
-            box-sizing: border-box;
-            z-index: 20;
-            max-width: 1920px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            padding: 0 40px;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+
+            /* Initial State: Transparent */
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid transparent;
+            box-shadow: none;
             border-radius: 0 0 2vw 2vw;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.1),
+            /* Ensure children (Liquid Glass) stay within this container */
+            box-sizing: border-box;
+        }
+
+        /* Scrolled State */
+        .header-bar.scrolled {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* Liquid Glass Layers - Hidden by default */
+        .liquidGlass-effect,
+        .liquidGlass-tint,
+        .liquidGlass-shine {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Show Liquid Glass when scrolled */
+        .header-bar.scrolled .liquidGlass-effect,
+        .header-bar.scrolled .liquidGlass-tint,
+        .header-bar.scrolled .liquidGlass-shine {
+            opacity: 1;
+        }
+
+        /* Pure CSS Layers for High Distortion */
+        .liquidGlass-effect {
+            position: absolute;
+            z-index: 0;
+            inset: 0;
+            /* Slight blur to smooth the background before distortion */
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            filter: url(#glass-distortion);
             overflow: hidden;
+            border-radius: inherit;
+        }
+
+        .liquidGlass-tint {
+            z-index: 1;
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: inherit;
+        }
+
+        .liquidGlass-shine {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            overflow: hidden;
+            /* Clean white highlights, no dark shadows */
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+            border-radius: inherit;
         }
 
         .header-bar::before {
@@ -89,10 +153,10 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(255, 255, 255, 0.6) 50%,
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.6) 50%,
+                    transparent 100%);
             pointer-events: none;
         }
 
@@ -103,10 +167,10 @@
             left: 0;
             width: 1px;
             height: 100%;
-            background: linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.6) 0%,
-                transparent 40%,
-                rgba(255, 255, 255, 0.1) 100%);
+            background: linear-gradient(180deg,
+                    rgba(255, 255, 255, 0.6) 0%,
+                    transparent 40%,
+                    rgba(255, 255, 255, 0.1) 100%);
             pointer-events: none;
         }
 
@@ -180,7 +244,7 @@
             transform: scale(0.98);
         }
 
-        .main-c1{
+        .main-c1 {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -216,7 +280,7 @@
 
 
 
-        .main-text {           
+        .main-text {
             position: absolute;
             left: 6%;
             right: 6%;
@@ -390,7 +454,8 @@
             background: linear-gradient(135deg, #7eb4f0 0%, #6f53a7 100%);
         }
 
-        .btn-apply, .btn-youtube {
+        .btn-apply,
+        .btn-youtube {
             position: relative;
             width: auto;
             min-width: 160px;
@@ -491,6 +556,7 @@
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(-50%);
             }
@@ -561,6 +627,7 @@
                 opacity: 0;
                 transform: scale(0.9);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -651,6 +718,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -662,6 +730,7 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
             to {
                 opacity: 0;
                 transform: translateY(-20px);
@@ -679,6 +748,8 @@
 
         .youtube-container {
             width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
             padding: 40px 3%;
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
             border-radius: 2vw 2vw 0 0;
@@ -838,7 +909,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* BBS Introduction Container - Fullscreen, Large Layout */
@@ -1460,7 +1533,7 @@
                 width: calc(100% - 30px);
                 min-height: 250px;
                 margin: 40px 15px 0;
-                
+
             }
 
             .main-text {
@@ -1662,7 +1735,7 @@
                 max-height: 40px;
                 padding: 0 12px;
                 width: 100%;
-                
+
             }
 
             .youtube-container {
@@ -1792,10 +1865,173 @@
                 right: -16px;
             }
         }
-   
+
+        /* Notification Banner */
+        .notice-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #222;
+            /* Dark background */
+            color: #eee;
+            z-index: 9999;
+            display: none;
+            /* Hidden by default */
+            justify-content: center;
+            /* Center the inner container */
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Pretendard', sans-serif;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .notice-inner {
+            width: 100%;
+            max-width: 1920px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            box-sizing: border-box;
+        }
+
+        .notice-content {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .notice-bar a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .notice-bar a:hover {
+            text-decoration: underline;
+            color: #6fa8e8;
+        }
+
+        .notice-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .notice-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .notice-checkbox input {
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .notice-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0 5px;
+            line-height: 1;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .notice-close-btn:hover {
+            opacity: 1;
+        }
+
+        /* Body adjustment when notice bar is active */
+        body.has-notice .header-bar {
+            top: 40px;
+            /* Shift header down */
+        }
+
+        body.has-notice .popup-overlay {
+            /* Ensure popup stays on top even with notice bar */
+            z-index: 10000;
+        }
+
+        /* Mobile adjustment */
+        @media (max-width: 768px) {
+            .notice-bar {
+                height: 60px;
+                /* Taller for wrapping */
+            }
+
+            .notice-inner {
+                padding: 0 15px;
+                font-size: 15px;
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .notice-content {
+                text-align: left;
+                justify-content: flex-start;
+                font-size: 12px;
+                line-height: 1.3;
+            }
+
+            .notice-controls {
+                gap: 10px;
+                flex-shrink: 0;
+                font-size: 11px;
+            }
+
+            body.has-notice .header-bar {
+                top: 60px;
+            }
+        }
     </style>
 </head>
+
 <body>
+    <!-- SVG Filter for Clean Edge Distortion (No light streaks) -->
+    <svg style="display: none">
+        <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox">
+            <!-- 1. Create the edge map by blurring the element's shape -->
+            <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blurMap" />
+
+            <!-- 2. Distort the background using the alpha gradient at the edges -->
+            <!-- Scale controls the strength of the "lens" effect -->
+            <feDisplacementMap in="SourceGraphic" in2="blurMap" scale="50" xChannelSelector="A" yChannelSelector="A" />
+        </filter>
+    </svg>
+
+
+
+    <!-- Notification Banner -->
+    <div id="noticeBar" class="notice-bar">
+        <div class="notice-inner">
+            <div class="notice-content">
+                <span id="noticeText"></span>
+            </div>
+            <div class="notice-controls">
+                <label class="notice-checkbox">
+                    <input type="checkbox" id="noticeDontShow">
+                    <span>오늘 하루 안보기</span>
+                </label>
+                <button class="notice-close-btn" onclick="closeNotice()">✕</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Popup Modal -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
@@ -1814,12 +2050,21 @@
 
         <!-- Header (flex) -->
         <header class="header-bar">
-            <div class="header-left">
+            <!-- Liquid Glass Layers -->
+            <div class="liquidGlass-effect"></div>
+            <div class="liquidGlass-tint"></div>
+            <div class="liquidGlass-shine"></div>
+
+            <div class="header-left" style="z-index: 10;">
                 <div class="logo">
                     <svg fill="none" viewBox="0 0 69 29.0746">
                         <g>
-                            <path d="M46.6648 10.6356C46.9544 7.85764 48.883 5.65458 51.3178 5.3178C48.883 4.98101 46.9544 2.77795 46.6648 0C46.3752 2.77795 44.4467 4.98101 42.0119 5.3178C44.4467 5.65458 46.3752 7.85764 46.6648 10.6356Z" fill="white" />
-                            <path d="M21.5227 16.8665C21.8445 16.5769 22.1512 15.8755 22.3915 15.2319C22.6897 14.4339 22.887 13.4322 22.887 12.3811C22.887 8.2152 21.2288 6.52697 18.5752 6.31889L0 4.76796L2.18809 9.3371V29.0724H18.8884C21.7586 29.0724 23.5134 26.3523 23.5134 22.1865C23.5134 20.0649 22.7755 17.6881 21.5227 16.8644V16.8665ZM8.56788 11.6024H15.0142C15.795 11.6024 16.4279 12.3725 16.4279 13.3249C16.4279 14.2774 15.795 15.0475 15.0142 15.0475H8.56788V11.6024ZM15.4604 23.791H8.56574V20.3459H15.4604C16.2949 20.3459 16.9727 21.116 16.9727 22.0685C16.9727 23.0209 16.2949 23.791 15.4604 23.791ZM63.592 15.0646H54.9812C54.2604 15.0646 53.7198 14.08 53.7198 13.1576C53.7198 12.2352 54.1961 11.4651 54.8847 11.4651L67.0243 11.4908L69 4.76796L52.0037 6.31889C49.1055 6.51839 47.3615 9.23843 47.3615 13.2799C47.3615 14.035 47.4258 14.7493 47.546 15.4121C48.0758 18.3081 49.7062 20.2387 52.0037 20.2387H60.2841C60.9748 20.2387 61.6549 20.9831 61.6549 22.032C61.6549 23.081 60.9427 23.7889 60.2841 23.7889H47.3615L48.9296 29.0724H63.4182C66.2413 29.0724 68.0604 26.0027 68.0604 21.9612C68.0604 21.3263 68.0111 20.7192 67.9231 20.14C67.4576 17.0339 65.9667 15.0625 63.5877 15.0625L63.592 15.0646ZM44.2767 16.9223C44.6092 16.6241 44.9245 15.8412 45.1691 15.1676C45.4544 14.3803 45.641 13.4043 45.641 12.3832C45.641 8.21734 43.8841 6.32104 41.3292 6.32104H23.8459L24.9443 9.33925V29.0745H41.6446C44.5148 29.0745 46.2696 26.3545 46.2696 22.1886C46.2696 20.0671 45.5316 17.746 44.2788 16.9223H44.2767ZM39.3621 17.9906L32.2829 22.4825C32.0384 22.637 31.7209 22.4611 31.7209 22.1736V13.1898C31.7209 12.9002 32.0405 12.7264 32.2829 12.8809L39.3621 17.3728C39.5895 17.5165 39.5895 17.8469 39.3621 17.9927V17.9906Z" fill="white" />
+                            <path
+                                d="M46.6648 10.6356C46.9544 7.85764 48.883 5.65458 51.3178 5.3178C48.883 4.98101 46.9544 2.77795 46.6648 0C46.3752 2.77795 44.4467 4.98101 42.0119 5.3178C44.4467 5.65458 46.3752 7.85764 46.6648 10.6356Z"
+                                fill="white" />
+                            <path
+                                d="M21.5227 16.8665C21.8445 16.5769 22.1512 15.8755 22.3915 15.2319C22.6897 14.4339 22.887 13.4322 22.887 12.3811C22.887 8.2152 21.2288 6.52697 18.5752 6.31889L0 4.76796L2.18809 9.3371V29.0724H18.8884C21.7586 29.0724 23.5134 26.3523 23.5134 22.1865C23.5134 20.0649 22.7755 17.6881 21.5227 16.8644V16.8665ZM8.56788 11.6024H15.0142C15.795 11.6024 16.4279 12.3725 16.4279 13.3249C16.4279 14.2774 15.795 15.0475 15.0142 15.0475H8.56788V11.6024ZM15.4604 23.791H8.56574V20.3459H15.4604C16.2949 20.3459 16.9727 21.116 16.9727 22.0685C16.9727 23.0209 16.2949 23.791 15.4604 23.791ZM63.592 15.0646H54.9812C54.2604 15.0646 53.7198 14.08 53.7198 13.1576C53.7198 12.2352 54.1961 11.4651 54.8847 11.4651L67.0243 11.4908L69 4.76796L52.0037 6.31889C49.1055 6.51839 47.3615 9.23843 47.3615 13.2799C47.3615 14.035 47.4258 14.7493 47.546 15.4121C48.0758 18.3081 49.7062 20.2387 52.0037 20.2387H60.2841C60.9748 20.2387 61.6549 20.9831 61.6549 22.032C61.6549 23.081 60.9427 23.7889 60.2841 23.7889H47.3615L48.9296 29.0724H63.4182C66.2413 29.0724 68.0604 26.0027 68.0604 21.9612C68.0604 21.3263 68.0111 20.7192 67.9231 20.14C67.4576 17.0339 65.9667 15.0625 63.5877 15.0625L63.592 15.0646ZM44.2767 16.9223C44.6092 16.6241 44.9245 15.8412 45.1691 15.1676C45.4544 14.3803 45.641 13.4043 45.641 12.3832C45.641 8.21734 43.8841 6.32104 41.3292 6.32104H23.8459L24.9443 9.33925V29.0745H41.6446C44.5148 29.0745 46.2696 26.3545 46.2696 22.1886C46.2696 20.0671 45.5316 17.746 44.2788 16.9223H44.2767ZM39.3621 17.9906L32.2829 22.4825C32.0384 22.637 31.7209 22.4611 31.7209 22.1736V13.1898C31.7209 12.9002 32.0405 12.7264 32.2829 12.8809L39.3621 17.3728C39.5895 17.5165 39.5895 17.8469 39.3621 17.9927V17.9906Z"
+                                fill="white" />
                         </g>
                     </svg>
                 </div>
@@ -1833,133 +2078,158 @@
                 <button onclick="handleNav('방어진고등학교')">방어진고등학교</button>
             </nav>
         </header>
-        
+
         <div class="main-c1">
-        <!-- Main Box -->
-        <div class="main-box">
-            <video autoplay muted loop playsinline>
-                <source src="v9.mp4" type="video/mp4">
-            </video>
-            <div class="main-text">
-                <div class="main-text-content">
-                    <p><span class="bold">방송</span>의 힘으로</p>
-                    <p>더 <span class="bold">즐거운 학교생활</span>을 만들어 갑니다</p>
-                </div>
-                <div class="main-buttons">
-                    <button class="main-btn" onclick="handleApply()">31기 지원하기</button>
-                    <button class="main-btn" onclick="handleYoutube()">BBS YOUTUBE</button>
+            <!-- Main Box -->
+            <div class="main-box">
+                <video autoplay muted loop playsinline>
+                    <source src="v9.mp4" type="video/mp4">
+                </video>
+                <div class="main-text">
+                    <div class="main-text-content">
+                        <p><span class="bold">방송</span>의 힘으로</p>
+                        <p>더 <span class="bold">즐거운 학교생활</span>을 만들어 갑니다</p>
+                    </div>
+                    <div class="main-buttons">
+                        <button class="main-btn" onclick="handleApply()">31기 지원하기</button>
+                        <button class="main-btn" onclick="handleYoutube()">BBS YOUTUBE</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="arrow-right">
-            <svg fill="none" viewBox="0 0 39.084 39.1309">
-                <g>
-                    <line stroke="white" stroke-width="7" x1="5.58962" x2="36.1033" y1="33.5448" y2="2.54472" />
-                    <line stroke="white" stroke-width="7" x1="3.08398" x2="39.084" y1="3.5" y2="3.5" />
-                    <line stroke="white" stroke-width="7" x1="35.584" x2="35.584" y1="36" />
-                    <path d="M3.58879 32.1668L6.96412 35.5422L3.39199 35.739L3.58879 32.1668Z" fill="black" stroke="white" />
-                </g>
-            </svg>
-        </div>
+            <div class="arrow-right">
+                <svg fill="none" viewBox="0 0 39.084 39.1309">
+                    <g>
+                        <line stroke="white" stroke-width="7" x1="5.58962" x2="36.1033" y1="33.5448" y2="2.54472" />
+                        <line stroke="white" stroke-width="7" x1="3.08398" x2="39.084" y1="3.5" y2="3.5" />
+                        <line stroke="white" stroke-width="7" x1="35.584" x2="35.584" y1="36" />
+                        <path d="M3.58879 32.1668L6.96412 35.5422L3.39199 35.739L3.58879 32.1668Z" fill="black"
+                            stroke="white" />
+                    </g>
+                </svg>
+            </div>
 
-        <div class="arrow-left">
-            <svg fill="none" viewBox="0 0 36 36" style="transform: rotate(180deg);">
-                <g>
-                    <line stroke="white" stroke-width="7" x2="36" y1="3.5" y2="3.5" />
-                    <line stroke="white" stroke-width="7" x1="32.5" x2="32.5" y1="36" />
-                </g>
-            </svg>
-        </div>
+            <div class="arrow-left">
+
+                <svg fill="none" viewBox="0 0 36 36" style="transform: rotate(180deg);">
+                    <g>
+                        <line stroke="white" stroke-width="7" x2="36" y1="3.5" y2="3.5" />
+                        <line stroke="white" stroke-width="7" x1="32.5" x2="32.5" y1="36" />
+                    </g>
+                </svg>
+            </div>
         </div>
     </div>
 
-        <!-- YouTube RSS Container -->
-        <div class="youtube-container" data-aos="fade-up" data-aos-duration="800">
-            <h2 class="youtube-title">최신 영상</h2>
-            <div class="youtube-wrapper" data-aos="fade-up" data-aos-delay="150">
-                <button class="slide-btn prev" id="prevBtn" onclick="slideVideos('prev')">❮</button>
-                <div class="video-grid" id="videoGrid">
-                    <div class="loading-spinner">로딩 중...</div>
-                </div>
-                <button class="slide-btn next" id="nextBtn" onclick="slideVideos('next')">❯</button>
+    <!-- YouTube RSS Container -->
+    <div class="youtube-container" data-aos="fade-up" data-aos-duration="800">
+        <h2 class="youtube-title">최신 영상</h2>
+        <div class="youtube-wrapper" data-aos="fade-up" data-aos-delay="150">
+            <button class="slide-btn prev" id="prevBtn" onclick="slideVideos('prev')">❮</button>
+            <div class="video-grid" id="videoGrid">
+                <div class="loading-spinner">로딩 중...</div>
             </div>
+            <button class="slide-btn next" id="nextBtn" onclick="slideVideos('next')">❯</button>
         </div>
+    </div>
 
-        <!-- BBS Introduction Container -->
-        <div class="bbs-intro-container">
-            <div class="bbs-intro-content">
-                <div class="bbs-intro-image scroll-animate" data-scroll-animate>
-                    <img src="3d.png" alt="BBS 3D Star" class="bbs-star-image">
-                </div>
-                <div class="bbs-intro-text-wrapper scroll-animate" data-scroll-animate>
-                    <h2 class="bbs-intro-title">차원이 다른 방송국</h2>
-                    <p class="bbs-intro-text">
-                        BBS에서는 당신의 활동을 지원하기 위해 열정이 넘치는 부원들이 활동하고 있습니다.
-                    </p>
-                    <div class="bbs-intro-highlights">
-                        <div class="bbs-intro-highlight-card">
-                            <div class="bbs-intro-highlight-title">EQUIPMENT</div>
-                            <div class="bbs-intro-highlight-text">Qu-16, DM3, EVOLVE-50, RS3 Mini, R8(예정)등 현업에 쓰이는 장비로 현장을 운영합니다.</div>
-                        </div>
-                        <div class="bbs-intro-highlight-card">
-                            <div class="bbs-intro-highlight-title">EXPERIENCE</div>
-                            <div class="bbs-intro-highlight-text">당신이 하고 싶은 것이라면 무엇이든지 할 수 있습니다.</div>
-                        </div>
+    <!-- BBS Introduction Container -->
+    <div class="bbs-intro-container">
+        <div class="bbs-intro-content">
+            <div class="bbs-intro-image scroll-animate" data-scroll-animate>
+                <img src="3d.webp" alt="BBS 3D Star" class="bbs-star-image">
+            </div>
+            <div class="bbs-intro-text-wrapper scroll-animate" data-scroll-animate>
+                <h2 class="bbs-intro-title">차원이 다른 방송국</h2>
+                <p class="bbs-intro-text">
+                    BBS에서는 당신의 활동을 지원하기 위해 열정이 넘치는 부원들이 활동하고 있습니다.
+                </p>
+                <div class="bbs-intro-highlights">
+                    <div class="bbs-intro-highlight-card">
+                        <div class="bbs-intro-highlight-title">EQUIPMENT</div>
+                        <div class="bbs-intro-highlight-text">Qu-16, DM3, EVOLVE-50, RS3 Mini, R8(예정)등 현업에 쓰이는 장비로 현장을
+                            운영합니다.</div>
+                    </div>
+                    <div class="bbs-intro-highlight-card">
+                        <div class="bbs-intro-highlight-title">EXPERIENCE</div>
+                        <div class="bbs-intro-highlight-text">당신이 하고 싶은 것이라면 무엇이든지 할 수 있습니다.</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Department Container -->
-        <div class="department-container" id="introduction">
-            <h2 class="department-title">부서 소개</h2>
-            <div class="department-grid" id="departmentGrid" data-aos="fade-up" data-aos-delay="150">
-                <!-- JavaScript로 부서 데이터가 동적으로 추가됩니다 -->
-            </div>
+    <!-- Department Container -->
+    <div class="department-container" id="introduction">
+        <h2 class="department-title">부서 소개</h2>
+        <div class="department-grid" id="departmentGrid" data-aos="fade-up" data-aos-delay="150">
+            <!-- JavaScript로 부서 데이터가 동적으로 추가됩니다 -->
         </div>
+    </div>
 
-        <!-- Footer marquee -->
-        <div class="footer-marquee">
-            <div class="footer-marquee-inner">
-                <span class="footer-marquee-text">
-                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-                </span>
-                <span class="footer-marquee-text">
-                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-                    BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-                </span>
-            </div>
+    <!-- Footer marquee -->
+    <div class="footer-marquee">
+        <div class="footer-marquee-inner">
+            <span class="footer-marquee-text">
+                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+            </span>
+            <span class="footer-marquee-text">
+                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
+            </span>
         </div>
+    </div>
 
-        <!-- Footer -->
-        <footer class="footer-overlay">
-            <!-- Footer Info -->
-            <div class="footer-info">
-                <img src="badge.png" alt="BBS Badge" class="footer-badge">
-                <div class="footer-info-text">
+    <!-- Footer -->
+    <footer class="footer-overlay">
+        <!-- Footer Info -->
+        <div class="footer-info">
+            <img src="badge.webp" alt="BBS Badge" class="footer-badge">
+            <div class="footer-info-text">
                 <div class="footer-title-wrapper">
                     <div class="title">방어진고등학교 방송부</div>
                 </div>
                 <div class="address">울산광역시 동구 학문로 50 (우 : 44054) 2층</div>
-                </div>
             </div>
+        </div>
 
-            <!-- Family Sites -->
-            <div class="footer-family">
-                <select class="family-select" onchange="handleFamilySite(this.value)">
-                    <option value="">패밀리 사이트</option>
-                    <option value="https://school.use.go.kr/bangeojin-h/M01">방어진고등학교</option>
-                </select>
-            </div>
-        </footer>
+        <!-- Family Sites -->
+        <div class="footer-family">
+            <select class="family-select" onchange="handleFamilySite(this.value)">
+                <option value="">패밀리 사이트</option>
+                <option value="https://school.use.go.kr/bangeojin-h/M01">방어진고등학교</option>
+            </select>
+        </div>
+    </footer>
     </div>
 
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <script>
+    <!-- Liquid Cursor Element -->
+    <div class="liquid-cursor" id="liquidCursor"></div>
+
+    <script type="module">
+        // Firebase SDK Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Firebase Configuration (from ss.html)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAQzwnZX0XGJOvFMayWTZRT0EP1HoWAKdQ",
+            authDomain: "bbsforu-4cd31.firebaseapp.com",
+            projectId: "bbsforu-4cd31",
+            storageBucket: "bbsforu-4cd31.firebasestorage.app",
+            messagingSenderId: "126074653228",
+            appId: "1:126074653228:web:604687efe7628b793a9f89",
+            measurementId: "G-MR3NRQB9JP"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
         // 부서 데이터 (이 배열에서 쉽게 추가/수정/삭제 가능)
         const departments = [
             {
@@ -1992,7 +2262,7 @@
         function renderDepartments() {
             const departmentGrid = document.getElementById('departmentGrid');
             departmentGrid.innerHTML = '';
-            
+
             departments.forEach(dept => {
                 const departmentCard = document.createElement('div');
                 departmentCard.className = 'department-card';
@@ -2004,7 +2274,7 @@
                     <h3 class="department-name">${dept.name}</h3>
                     <p class="department-description">${dept.description}</p>
                 `;
-                
+
                 departmentGrid.appendChild(departmentCard);
             });
         }
@@ -2012,7 +2282,7 @@
         function toggleMenu() {
             const nav = document.querySelector('.nav');
             const hamburger = document.querySelector('.hamburger');
-            
+
             if (nav.classList.contains('active')) {
                 // 메뉴 닫기 애니메이션
                 nav.style.animation = 'slideUp 0.3s ease forwards';
@@ -2026,6 +2296,44 @@
                 nav.style.animation = 'slideDown 0.3s ease forwards';
             }
         }
+
+        // Glare Effect
+        const headerBar = document.querySelector('.header-bar');
+        const headerGlare = document.getElementById('headerGlare');
+
+        if (headerBar && headerGlare) {
+            headerBar.addEventListener('mousemove', (e) => {
+                const rect = headerBar.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                headerGlare.style.opacity = '1';
+                headerGlare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 50%)`;
+            });
+
+            headerBar.addEventListener('mouseleave', () => {
+                headerGlare.style.opacity = '0';
+            });
+        }
+
+        // Liquid Cursor Logic
+        const liquidCursor = document.getElementById('liquidCursor');
+        let isCursorVisible = false;
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isCursorVisible) {
+                liquidCursor.style.display = 'block';
+                isCursorVisible = true;
+            }
+            // Move the cursor directly
+            liquidCursor.style.left = e.clientX + 'px';
+            liquidCursor.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mouseleave', () => {
+            liquidCursor.style.display = 'none';
+            isCursorVisible = false;
+        });
 
         // 드래그 기능 (마우스 + 터치 지원)
         let isDown = false;
@@ -2072,7 +2380,7 @@
 
         // 드래그 후 클릭 방지
         document.querySelectorAll('.video-card').forEach(card => {
-            card.addEventListener('click', function(e) {
+            card.addEventListener('click', function (e) {
                 if (isDragged) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -2083,7 +2391,7 @@
 
         // 메뉴 항목 클릭시 메뉴 닫기 (애니메이션 포함)
         document.querySelectorAll('.nav button').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const nav = document.querySelector('.nav');
                 nav.style.animation = 'slideUp 0.3s ease forwards';
                 setTimeout(() => {
@@ -2094,7 +2402,7 @@
         });
 
         // 화면 크기 변경시 메뉴 상태 초기화
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth > 768) {
                 const nav = document.querySelector('.nav');
                 nav.classList.remove('active');
@@ -2108,7 +2416,7 @@
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');
             }
-            
+
             if (section === '소개') {
                 // 부서 소개 컨테이너로 스크롤
                 const introSection = document.getElementById('introduction');
@@ -2142,29 +2450,96 @@
         }
 
         // 팝업 관련 함수
-        // 팝업 표시 여부를 결정하는 설정 (true = 표시, false = 표시 안함)
-        const SHOW_POPUP = true; // 팝업 활성화/비활성화
-
-        function showPopup() {
-            // 팝업이 비활성화되었으면 표시하지 않음
-            if (!SHOW_POPUP) return;
-
+        async function showPopup() {
             // 오늘 하루 안보기 설정 확인
             const today = new Date().toDateString();
             const dontShowToday = localStorage.getItem('popupDontShowToday');
-            
+
             if (dontShowToday === today) {
                 return; // 오늘 이미 안본다고 설정했으면 표시하지 않음
             }
 
-            const popupOverlay = document.getElementById('popupOverlay');
-            popupOverlay.classList.add('active');
+            try {
+                // Firestore에서 팝업 설정 가져오기
+                const docRef = doc(db, "settings", "popup");
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+
+                    // isActive가 true이고 imageUrl이 있을 때만 표시
+                    if (data.isActive && data.imageUrl) {
+                        const popupImage = document.getElementById('popupImage');
+                        popupImage.src = data.imageUrl;
+
+                        const popupOverlay = document.getElementById('popupOverlay');
+                        popupOverlay.classList.add('active');
+                    }
+                } else {
+                    console.log("No popup settings found in Firestore.");
+                }
+            } catch (error) {
+                console.error("Error fetching popup settings:", error);
+            }
         }
 
-        function closePopup() {
+        // 공지바 관련 함수
+        async function showNotice() {
+            // 오늘 하루 안보기 체크 확인
+            const today = new Date().toDateString();
+            const dontShowNotice = localStorage.getItem('noticeDontShowToday');
+
+            if (dontShowNotice === today) {
+                return;
+            }
+
+            try {
+                const docRef = doc(db, "settings", "notice");
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+
+                    if (data.isActive && data.message) {
+                        const noticeBar = document.getElementById('noticeBar');
+                        const noticeText = document.getElementById('noticeText');
+
+                        // URL이 있으면 링크로 감싸기
+                        if (data.url && data.url.trim() !== "") {
+                            noticeText.innerHTML = `<a href="${data.url}" target="_blank">${data.message} <span>↗</span></a>`;
+                        } else {
+                            noticeText.textContent = data.message;
+                        }
+
+                        // 표시 및 스타일 조정
+                        noticeBar.style.display = 'flex';
+                        document.body.classList.add('has-notice');
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching notice settings:", error);
+            }
+        }
+
+        // 공지바 닫기 함수
+        window.closeNotice = function () {
+            const noticeBar = document.getElementById('noticeBar');
+            const dontShowCheckbox = document.getElementById('noticeDontShow');
+
+            if (dontShowCheckbox && dontShowCheckbox.checked) {
+                const today = new Date().toDateString();
+                localStorage.setItem('noticeDontShowToday', today);
+            }
+
+            noticeBar.style.display = 'none';
+            document.body.classList.remove('has-notice');
+        }
+
+        // Make closePopup globally available (adding it to window) since it's called from HTML
+        window.closePopup = function () {
             const popupOverlay = document.getElementById('popupOverlay');
             const dontShowCheckbox = document.getElementById('dontShowToday');
-            
+
             // 오늘 하루 안보기 체크 여부 확인
             if (dontShowCheckbox.checked) {
                 const today = new Date().toDateString();
@@ -2174,19 +2549,29 @@
             popupOverlay.classList.remove('active');
         }
 
+        // Handle apply / youtube / nav functions globally
+        window.handleApply = handleApply;
+        window.handleYoutube = handleYoutube;
+        window.handleNav = handleNav;
+        window.handleFamilySite = handleFamilySite;
+        window.toggleMenu = toggleMenu;
+        window.slideVideos = slideVideos;
+
+
         // 오버레이 클릭 시 팝업 닫기
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const popupOverlay = document.getElementById('popupOverlay');
             if (popupOverlay) {
-                popupOverlay.addEventListener('click', function(e) {
+                popupOverlay.addEventListener('click', function (e) {
                     if (e.target === popupOverlay) {
                         closePopup();
                     }
                 });
             }
-            
-            // 페이지 로드 시 팝업 표시
+
+            // 페이지 로드 시 팝업 및 공지바 표시
             showPopup();
+            showNotice();
 
             // AOS 초기화
             if (window.AOS) {
@@ -2203,7 +2588,7 @@
         function slideVideos(direction) {
             const videoGrid = document.getElementById('videoGrid');
             const scrollAmount = 320; // 카드 너비(280px) + 갭(20px) + 여유
-            
+
             if (direction === 'next') {
                 videoGrid.scrollLeft += scrollAmount;
             } else {
@@ -2217,13 +2602,13 @@
                 // YouTube 채널 ID (여기에 유튜브 채널 ID를 입력하세요)
                 const YOUTUBE_CHANNEL_ID = 'UCzaRFkwvHRieGLq65cuXAjA'; // Google Developers 채널 (예시)
                 const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
-                
+
                 // rss2json API를 사용하여 RSS를 JSON으로 변환
                 const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
-                
+
                 const response = await fetch(API_URL);
                 const data = await response.json();
-                
+
                 if (data.items && data.items.length > 0) {
                     displayVideos(data.items.slice(0, 12)); // 최신 12개만 표시
                 } else {
@@ -2238,18 +2623,18 @@
         function displayVideos(items) {
             const videoGrid = document.getElementById('videoGrid');
             videoGrid.innerHTML = '';
-            
+
             items.forEach(item => {
                 // YouTube 영상 URL과 섬네일 추출
                 const videoId = extractVideoId(item.link);
                 const thumbnail = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
                 const title = item.title;
                 const pubDate = new Date(item.pubDate).toLocaleDateString('ko-KR');
-                
+
                 const videoCard = document.createElement('div');
                 videoCard.className = 'video-card';
                 videoCard.onclick = () => window.open(item.link, '_blank');
-                
+
                 videoCard.innerHTML = `
                     <img src="${thumbnail}" alt="${title}" class="video-thumbnail">
                     <div class="video-info">
@@ -2257,7 +2642,7 @@
                         <p class="video-date">${pubDate}</p>
                     </div>
                 `;
-                
+
                 videoGrid.appendChild(videoCard);
             });
         }
@@ -2274,9 +2659,19 @@
         }
 
         // 페이지 로드 시 영상/부서 정보 및 스크롤 애니메이션 초기화
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadYouTubeVideos();
             renderDepartments();
+
+            // Header Scroll Effect
+            const header = document.querySelector('.header-bar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
 
             // Scroll reveal for BBS intro
             const scrollTargets = document.querySelectorAll('[data-scroll-animate]');
@@ -2292,4 +2687,5 @@
         });
     </script>
 </body>
+
 </html>
