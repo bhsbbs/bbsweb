@@ -15,6 +15,7 @@
     <meta property="og:image" content="https://bbs.mua.co.kr/ii.png">
     <!-- AOS Animation CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preload" href="background.webp" as="image" fetchpriority="high">
     <link rel="stylesheet preload" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
@@ -58,6 +59,60 @@
             min-height: 85vh;
             margin: 0 auto;
             box-sizing: border-box;
+        }
+
+        /* Liquid Cursor Styles - Primary Interface Refinement: Sophisticated Dark Tint */
+        .liquid-cursor {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 32px;
+            /* Adjusted size for balance */
+            height: 32px;
+            background: rgba(0, 0, 0, 0.3);
+            /* Sophisticated Dark Tint */
+            backdrop-filter: blur(8px) saturate(180%);
+            -webkit-backdrop-filter: blur(8px) saturate(180%);
+
+            /* High visibility border: Light inner, Subtle dark outer */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100000;
+            will-change: transform, width, height, border-radius;
+            transform: translate3d(-50%, -50%, 0);
+            transition:
+                width 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                border-radius 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                background 0.3s ease,
+                border 0.3s ease;
+            display: none;
+        }
+
+        .liquid-cursor.snapped {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 99px !important;
+
+            /* Disable blur when snapped to show button text clearly */
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+
+            transition:
+                width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+                height 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+                border-radius 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+                background 0.3s ease;
+        }
+
+        /* Scale up when hovering any interactive element */
+        .liquid-cursor.hovering:not(.snapped) {
+            transform: translate3d(-50%, -50%, 0) scale(1.8);
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         /* header bar using flex */
@@ -104,6 +159,7 @@
         .liquidGlass-shine {
             opacity: 0;
             transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         /* Show Liquid Glass when scrolled */
@@ -124,6 +180,11 @@
             filter: url(#glass-distortion);
             overflow: hidden;
             border-radius: inherit;
+        }
+
+        /* Parallax Style */
+        .bbs-star-image {
+            transition: transform 0.15s ease-out !important;
         }
 
         .liquidGlass-tint {
@@ -222,6 +283,8 @@
             border-radius: 90px;
             min-width: 240px;
             border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            z-index: 10;
         }
 
         .nav button {
@@ -233,6 +296,8 @@
             cursor: pointer;
             transition: opacity 0.3s;
             padding: 6px 8px;
+            position: relative;
+            z-index: 10;
         }
 
         .nav button:hover {
@@ -286,7 +351,7 @@
             right: 6%;
             bottom: 6%;
             color: white;
-            z-index: 10;
+            z-index: 20;
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
@@ -342,10 +407,15 @@
             font-weight: 600;
             letter-spacing: 0.03em;
             cursor: pointer;
-            transition: transform 0.2s ease-out, box-shadow 0.25s ease-out, background 0.25s ease-out, border-color 0.25s ease-out;
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.25s ease-out, background 0.25s ease-out, border-color 0.25s ease-out;
             white-space: nowrap;
             position: relative;
             overflow: hidden;
+            will-change: transform;
+        }
+
+        .main-btn.magnetic-active {
+            transition: transform 0.1s ease-out;
         }
 
         .main-btn::before {
@@ -443,9 +513,14 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
             padding: 0 20px;
             box-shadow: 0 8px 20px rgba(79, 67, 151, 0.3);
+            will-change: transform;
+        }
+
+        .btn.magnetic-active {
+            transition: transform 0.1s ease-out;
         }
 
         .btn:hover {
@@ -457,6 +532,7 @@
         .btn-apply,
         .btn-youtube {
             position: relative;
+            z-index: 10;
             width: auto;
             min-width: 160px;
         }
@@ -478,6 +554,7 @@
             display: flex;
             flex-direction: row;
             position: relative;
+            z-index: 10;
             color: white;
             font-family: 'Pretendard', sans-serif;
         }
@@ -613,6 +690,7 @@
 
         .popup-content {
             position: relative;
+            z-index: 10;
             background: white;
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -767,6 +845,7 @@
             max-width: 1820px;
             margin: 0 auto;
             position: relative;
+            z-index: 10;
         }
 
         .video-grid {
@@ -778,6 +857,7 @@
         @media (min-width: 1921px) {
             .youtube-wrapper {
                 position: relative;
+                z-index: 10;
             }
 
             .video-grid {
@@ -875,6 +955,7 @@
             margin: 0 0 10px 0;
             line-height: 1.4;
             display: -webkit-box;
+            line-clamp: 2;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
@@ -985,14 +1066,49 @@
         /* Scroll reveal animation (요즘식 부드러운 등장) */
         .scroll-animate {
             opacity: 0;
-            transform: translateY(45px) scale(0.98);
-            transition: opacity 0.9s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(60px) scale(0.96);
+            transition:
+                opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: opacity, transform;
         }
 
         .scroll-animate.in-view {
             opacity: 1;
             transform: translateY(0) scale(1);
+        }
+
+        /* Staggered Delays */
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.25s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.55s;
+        }
+
+        .delay-5 {
+            transition-delay: 0.7s;
+        }
+
+        /* BBS Star specialized animation */
+        .bbs-star-image.scroll-animate {
+            transform: translateY(40px) scale(0.8) rotate(-5deg);
+            transition:
+                opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .bbs-star-image.scroll-animate.in-view {
+            transform: translateY(0) scale(1) rotate(0deg);
         }
 
         .bbs-intro-title {
@@ -2006,11 +2122,11 @@
     <svg style="display: none">
         <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox">
             <!-- 1. Create the edge map by blurring the element's shape -->
-            <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blurMap" />
+            <feGaussianBlur in="SourceAlpha" stdDeviation="20" result="blurMap" />
 
             <!-- 2. Distort the background using the alpha gradient at the edges -->
             <!-- Scale controls the strength of the "lens" effect -->
-            <feDisplacementMap in="SourceGraphic" in2="blurMap" scale="50" xChannelSelector="A" yChannelSelector="A" />
+            <feDisplacementMap in="SourceGraphic" in2="blurMap" scale="30" xChannelSelector="A" yChannelSelector="A" />
         </filter>
     </svg>
 
@@ -2073,9 +2189,9 @@
             </div>
 
             <nav class="nav" aria-label="main navigation">
-                <button onclick="handleNav('소개')">소개</button>
-                <button onclick="handleNav('유튜브')">유튜브</button>
-                <button onclick="handleNav('방어진고등학교')">방어진고등학교</button>
+                <button class="snap-target" onclick="handleNav('소개')">소개</button>
+                <button class="snap-target" onclick="handleNav('유튜브')">유튜브</button>
+                <button class="snap-target" onclick="handleNav('인스타그램')">인스타그램</button>
             </nav>
         </header>
 
@@ -2091,13 +2207,13 @@
                         <p>더 <span class="bold">즐거운 학교생활</span>을 만들어 갑니다</p>
                     </div>
                     <div class="main-buttons">
-                        <button class="main-btn" onclick="handleApply()">31기 지원하기</button>
-                        <button class="main-btn" onclick="handleYoutube()">BBS YOUTUBE</button>
+                        <button class="main-btn magnetic snap-target" onclick="handleApply()">31기 지원하기</button>
+                        <button class="main-btn magnetic snap-target" onclick="handleYoutube()">BBS YOUTUBE</button>
                     </div>
                 </div>
             </div>
 
-            <div class="arrow-right">
+            <div class="arrow-right snap-target">
                 <svg fill="none" viewBox="0 0 39.084 39.1309">
                     <g>
                         <line stroke="white" stroke-width="7" x1="5.58962" x2="36.1033" y1="33.5448" y2="2.54472" />
@@ -2109,7 +2225,7 @@
                 </svg>
             </div>
 
-            <div class="arrow-left">
+            <div class="arrow-left snap-target">
 
                 <svg fill="none" viewBox="0 0 36 36" style="transform: rotate(180deg);">
                     <g>
@@ -2139,18 +2255,18 @@
             <div class="bbs-intro-image scroll-animate" data-scroll-animate>
                 <img src="3d.webp" alt="BBS 3D Star" class="bbs-star-image">
             </div>
-            <div class="bbs-intro-text-wrapper scroll-animate" data-scroll-animate>
-                <h2 class="bbs-intro-title">차원이 다른 방송국</h2>
-                <p class="bbs-intro-text">
+            <div class="bbs-intro-text-wrapper">
+                <h2 class="bbs-intro-title scroll-animate delay-1" data-scroll-animate>차원이 다른 방송국</h2>
+                <p class="bbs-intro-text scroll-animate delay-2" data-scroll-animate>
                     BBS에서는 당신의 활동을 지원하기 위해 열정이 넘치는 부원들이 활동하고 있습니다.
                 </p>
                 <div class="bbs-intro-highlights">
-                    <div class="bbs-intro-highlight-card">
+                    <div class="bbs-intro-highlight-card scroll-animate delay-3" data-scroll-animate>
                         <div class="bbs-intro-highlight-title">EQUIPMENT</div>
                         <div class="bbs-intro-highlight-text">Qu-16, DM3, EVOLVE-50, RS3 Mini, R8(예정)등 현업에 쓰이는 장비로 현장을
                             운영합니다.</div>
                     </div>
-                    <div class="bbs-intro-highlight-card">
+                    <div class="bbs-intro-highlight-card scroll-animate delay-4" data-scroll-animate>
                         <div class="bbs-intro-highlight-title">EXPERIENCE</div>
                         <div class="bbs-intro-highlight-text">당신이 하고 싶은 것이라면 무엇이든지 할 수 있습니다.</div>
                     </div>
@@ -2191,6 +2307,7 @@
                     <div class="title">방어진고등학교 방송부</div>
                 </div>
                 <div class="address">울산광역시 동구 학문로 50 (우 : 44054) 2층</div>
+                <div class="address">Made by <a href="https://mua.co.kr">jK</a></div>
             </div>
         </div>
 
@@ -2316,19 +2433,123 @@
             });
         }
 
-        // Liquid Cursor Logic
+        // Parallax Motion Logic
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            // 1. BBS Star Parallax (Combined Mouse + Scroll)
+            const starImage = document.querySelector('.bbs-star-image');
+            if (starImage) {
+                const rect = starImage.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const moveX = (mouseX - centerX) * 0.04;
+                const moveY = (mouseY - centerY) * 0.04;
+
+                // Get scroll progress from dataset
+                const scrollProgress = parseFloat(starImage.dataset.scrollProgress || 0.5);
+                const scrollScale = 0.95 + (scrollProgress * 0.1);
+                const scrollRotate = (scrollProgress - 0.5) * 10;
+
+                starImage.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scrollScale}) rotate(${scrollRotate}deg)`;
+            }
+
+            // 2. Magnetic Buttons pull logic
+            const magneticButtons = document.querySelectorAll('.magnetic');
+            magneticButtons.forEach(btn => {
+                const rect = btn.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const distX = mouseX - centerX;
+                const distY = mouseY - centerY;
+                const distance = Math.sqrt(distX * distX + distY * distY);
+
+                // If within 45px radius
+                if (distance < 45) {
+                    btn.classList.add('magnetic-active');
+                    const pullX = distX * 0.3;
+                    const pullY = distY * 0.3;
+                    btn.style.transform = `translate(${pullX}px, ${pullY}px)`;
+                } else {
+                    btn.classList.remove('magnetic-active');
+                    btn.style.transform = `translate(0px, 0px)`;
+                }
+            });
+        });
+
+        // Liquid Cursor Logic (Optimized with LERP and translate3d)
         const liquidCursor = document.getElementById('liquidCursor');
         let isCursorVisible = false;
+        let mouseX = 0, mouseY = 0; // Target position
+        let cursorX = 0, cursorY = 0; // Current lerped position
+
+        const lerp = (start, end, amount) => {
+            return (1 - amount) * start + amount * end;
+        };
 
         document.addEventListener('mousemove', (e) => {
             if (!isCursorVisible) {
                 liquidCursor.style.display = 'block';
                 isCursorVisible = true;
+                cursorX = e.clientX;
+                cursorY = e.clientY;
             }
-            // Move the cursor directly
-            liquidCursor.style.left = e.clientX + 'px';
-            liquidCursor.style.top = e.clientY + 'px';
+
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            const snapTarget = e.target.closest('.snap-target');
+
+            if (snapTarget) {
+                const rect = snapTarget.getBoundingClientRect();
+                liquidCursor.classList.add('snapped');
+
+                // Set cursor targets to target center
+                mouseX = rect.left + rect.width / 2;
+                mouseY = rect.top + rect.height / 2;
+
+                liquidCursor.style.width = (rect.width + 12) + 'px';
+                liquidCursor.style.height = (rect.height + 12) + 'px';
+            } else {
+                liquidCursor.classList.remove('snapped');
+                liquidCursor.style.width = '32px';
+                liquidCursor.style.height = '32px';
+                liquidCursor.style.borderRadius = '50%';
+            }
         });
+
+        // Universal Hover Scale Logic
+        document.addEventListener('mouseover', (e) => {
+            const isClickable = e.target.closest('button, a, select, input, .video-card, .arrow-right, .arrow-left');
+            if (isClickable) {
+                liquidCursor.classList.add('hovering');
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const isClickable = e.target.closest('button, a, select, input, .video-card, .arrow-right, .arrow-left');
+            if (isClickable) {
+                liquidCursor.classList.remove('hovering');
+            }
+        });
+
+        // Loop for smooth follow effect
+        function updateCursorLoop() {
+            // Snappy follow speed: significantly faster for "main cursor" feel
+            const lerpAmount = liquidCursor.classList.contains('snapped') ? 0.35 : 0.45;
+
+            cursorX = lerp(cursorX, mouseX, lerpAmount);
+            cursorY = lerp(cursorY, mouseY, lerpAmount);
+
+            // translate3d for GPU acceleration + translate(-50%, -50%) to center the element
+            liquidCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+
+            requestAnimationFrame(updateCursorLoop);
+        }
+        requestAnimationFrame(updateCursorLoop);
 
         document.addEventListener('mouseleave', () => {
             liquidCursor.style.display = 'none';
@@ -2426,9 +2647,9 @@
             } else if (section === '유튜브') {
                 // YouTube 채널로 이동 (URL은 필요에 따라 수정)
                 window.open('https://www.youtube.com/channel/UCzaRFkwvHRieGLq65cuXAjA', '_blank');
-            } else if (section === '방어진고등학교') {
+            } else if (section === '인스타그램') {
                 // 방어진고등학교 웹사이트로 이동 (URL은 필요에 따라 수정)
-                window.open('https://school.use.go.kr/bangeojin-h/M01', '_blank');
+                window.open('https://www.instagram.com/bbs.official_onair/', '_blank');
             }
         }
 
@@ -2673,17 +2894,47 @@
                 }
             });
 
-            // Scroll reveal for BBS intro
+            // Scroll reveal for elements
             const scrollTargets = document.querySelectorAll('[data-scroll-animate]');
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('in-view');
-                        io.unobserve(entry.target);
+                        // io.unobserve(entry.target); // Keep observing if we want to reset (optional)
                     }
                 });
-            }, { threshold: 0.2 });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px' // Trigger slightly before it hits the bottom
+            });
             scrollTargets.forEach(el => io.observe(el));
+
+            // Scroll-Linked Parallax for Intro Section
+            const introContainer = document.querySelector('.bbs-intro-container');
+            const introStar = document.querySelector('.bbs-star-image');
+
+            if (introContainer && introStar) {
+                window.addEventListener('scroll', () => {
+                    const rect = introContainer.getBoundingClientRect();
+                    const viewHeight = window.innerHeight;
+
+                    // Calculate how much of the container is in view (0 to 1)
+                    if (rect.top < viewHeight && rect.bottom > 0) {
+                        const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
+                        const clampedProgress = Math.max(0, Math.min(1, progress));
+
+                        // Apply subtle scroll-linked transform
+                        // Move from -30px to 30px, scale from 0.95 to 1.05
+                        const translateY = (clampedProgress - 0.5) * 60;
+                        const scale = 0.95 + (clampedProgress * 0.1);
+
+                        // Merging with the mouse parallax if necessary, but here we focus on scroll
+                        // If mouse parallax is also active, we should store these and combine them.
+                        // For now, let's keep it simple.
+                        introStar.dataset.scrollProgress = clampedProgress;
+                    }
+                });
+            }
         });
     </script>
 </body>
