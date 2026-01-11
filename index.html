@@ -15,6 +15,8 @@
     <meta property="og:image" content="https://bbs.mua.co.kr/ii.png">
     <!-- AOS Animation CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Anime.js Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
     <link rel="preload" href="background.webp" as="image" fetchpriority="high">
     <link rel="stylesheet preload" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
@@ -46,6 +48,73 @@
             overflow-y: auto;
             margin: 0;
             padding: 0;
+        }
+
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-screen.hide .loading-logo {
+            /* Handled by Anime.js now */
+        }
+
+        .loading-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-circle-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        .loading-logo {
+            position: relative;
+            z-index: 10;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* animation: pulseGlow 2s ease-in-out infinite; */
+            /* Animation handled by JS */
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .loading-logo svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(111, 168, 232, 0.6));
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(0.95);
+                filter: drop-shadow(0 0 15px rgba(111, 168, 232, 0.5));
+            }
+
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 25px rgba(111, 168, 232, 0.8));
+            }
         }
 
         /* Main Box Container */
@@ -191,7 +260,7 @@
             z-index: 1;
             position: absolute;
             inset: 0;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: inherit;
         }
 
@@ -1396,6 +1465,13 @@
         }
 
         @media (max-width: 768px) {
+
+            /* 모바일에서 Liquid Cursor 완전 숨김 */
+            .liquid-cursor {
+                display: none !important;
+                visibility: hidden !important;
+            }
+
             .bbs-intro-container {
                 padding: 40px 4% 45px;
             }
@@ -2118,6 +2194,24 @@
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-circle-container">
+            <div class="loading-logo">
+                <svg fill="none" viewBox="0 0 69 29.0746">
+                    <g>
+                        <path
+                            d="M46.6648 10.6356C46.9544 7.85764 48.883 5.65458 51.3178 5.3178C48.883 4.98101 46.9544 2.77795 46.6648 0C46.3752 2.77795 44.4467 4.98101 42.0119 5.3178C44.4467 5.65458 46.3752 7.85764 46.6648 10.6356Z"
+                            fill="white" />
+                        <path
+                            d="M21.5227 16.8665C21.8445 16.5769 22.1512 15.8755 22.3915 15.2319C22.6897 14.4339 22.887 13.4322 22.887 12.3811C22.887 8.2152 21.2288 6.52697 18.5752 6.31889L0 4.76796L2.18809 9.3371V29.0724H18.8884C21.7586 29.0724 23.5134 26.3523 23.5134 22.1865C23.5134 20.0649 22.7755 17.6881 21.5227 16.8644V16.8665ZM8.56788 11.6024H15.0142C15.795 11.6024 16.4279 12.3725 16.4279 13.3249C16.4279 14.2774 15.795 15.0475 15.0142 15.0475H8.56788V11.6024ZM15.4604 23.791H8.56574V20.3459H15.4604C16.2949 20.3459 16.9727 21.116 16.9727 22.0685C16.9727 23.0209 16.2949 23.791 15.4604 23.791ZM63.592 15.0646H54.9812C54.2604 15.0646 53.7198 14.08 53.7198 13.1576C53.7198 12.2352 54.1961 11.4651 54.8847 11.4651L67.0243 11.4908L69 4.76796L52.0037 6.31889C49.1055 6.51839 47.3615 9.23843 47.3615 13.2799C47.3615 14.035 47.4258 14.7493 47.546 15.4121C48.0758 18.3081 49.7062 20.2387 52.0037 20.2387H60.2841C60.9748 20.2387 61.6549 20.9831 61.6549 22.032C61.6549 23.081 60.9427 23.7889 60.2841 23.7889H47.3615L48.9296 29.0724H63.4182C66.2413 29.0724 68.0604 26.0027 68.0604 21.9612C68.0604 21.3263 68.0111 20.7192 67.9231 20.14C67.4576 17.0339 65.9667 15.0625 63.5877 15.0625L63.592 15.0646ZM44.2767 16.9223C44.6092 16.6241 44.9245 15.8412 45.1691 15.1676C45.4544 14.3803 45.641 13.4043 45.641 12.3832C45.641 8.21734 43.8841 6.32104 41.3292 6.32104H23.8459L24.9443 9.33925V29.0745H41.6446C44.5148 29.0745 46.2696 26.3545 46.2696 22.1886C46.2696 20.0671 45.5316 17.746 44.2788 16.9223H44.2767ZM39.3621 17.9906L32.2829 22.4825C32.0384 22.637 31.7209 22.4611 31.7209 22.1736V13.1898C31.7209 12.9002 32.0405 12.7264 32.2829 12.8809L39.3621 17.3728C39.5895 17.5165 39.5895 17.8469 39.3621 17.9927V17.9906Z"
+                            fill="white" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
     <!-- SVG Filter for Clean Edge Distortion (No light streaks) -->
     <svg style="display: none">
         <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox">
@@ -2263,7 +2357,8 @@
                 <div class="bbs-intro-highlights">
                     <div class="bbs-intro-highlight-card scroll-animate delay-3" data-scroll-animate>
                         <div class="bbs-intro-highlight-title">EQUIPMENT</div>
-                        <div class="bbs-intro-highlight-text">Qu-16, DM3, EVOLVE-50, RS3 Mini, R8(예정)등 현업에 쓰이는 장비로 현장을
+                        <div class="bbs-intro-highlight-text">Qu-16, DM3, EVOLVE-50, RS3 Mini, R8(예정), Dji mini 3 pro등
+                            현업에 쓰이는 장비로 현장을
                             운영합니다.</div>
                     </div>
                     <div class="bbs-intro-highlight-card scroll-animate delay-4" data-scroll-animate>
@@ -2881,6 +2976,47 @@
 
         // 페이지 로드 시 영상/부서 정보 및 스크롤 애니메이션 초기화
         document.addEventListener('DOMContentLoaded', function () {
+            // Loading Screen: OneDirection Style Reveal Animation
+            // Loading Screen: Transparent Hole Reveal (Mask)
+            const loadingScreen = document.getElementById('loadingScreen');
+            const loadingLogo = document.querySelector('.loading-logo');
+
+            // Force initial opacity
+            loadingLogo.style.opacity = '0';
+
+            // Mask animation logic object
+            const maskEffect = { radius: 0 };
+
+            const tl = anime.timeline({
+                easing: 'easeOutExpo',
+                complete: () => {
+                    loadingScreen.style.display = 'none';
+                    loadingScreen.style.maskImage = 'none';
+                    loadingScreen.style.webkitMaskImage = 'none';
+                }
+            });
+
+            tl.add({
+                targets: loadingLogo,
+                opacity: [0, 1],
+                scale: [0.8, 1],
+                duration: 800,
+                delay: 100,
+                easing: 'easeOutQuart'
+            })
+                .add({
+                    targets: maskEffect,
+                    radius: 200, // 0% to 200% radius
+                    duration: 400,
+                    easing: 'easeInQuad',
+                    update: (anim) => {
+                        const r = maskEffect.radius;
+                        const gradient = `radial-gradient(circle, transparent ${r}%, #000 ${r + 5}%)`;
+                        loadingScreen.style.maskImage = gradient;
+                        loadingScreen.style.webkitMaskImage = gradient;
+                    }
+                }, '-=200'); // Overlap with logo for speed
+
             loadYouTubeVideos();
             renderDepartments();
 
@@ -2935,6 +3071,342 @@
                     }
                 });
             }
+        });
+
+        // ============================================================
+        // ANIME.JS ANIMATIONS - Advanced Animation System
+        // ============================================================
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 초기 상태 설정 - 애니메이션 시작 전 요소들 숨기기
+            const headerLeft = document.querySelector('.header-left');
+            const nav = document.querySelector('.nav');
+            const mainBox = document.querySelector('.main-box');
+            const mainTextContent = document.querySelector('.main-text-content');
+
+            // 초기 스타일 설정
+            if (headerLeft) headerLeft.style.opacity = '0';
+            if (nav) nav.style.opacity = '0';
+            if (mainBox) mainBox.style.opacity = '0';
+
+            // ============================================================
+            // 1. 초기 로딩 애니메이션 (페이지 진입 시)
+            // ============================================================
+            const loadingTimeline = anime.timeline({
+                easing: 'easeOutExpo',
+            });
+
+            // 헤더 왼쪽 (로고 + 서브타이틀) 등장
+            loadingTimeline.add({
+                targets: '.header-left',
+                opacity: [0, 1],
+                translateY: [-30, 0],
+                duration: 800,
+            });
+
+            // 네비게이션 등장
+            loadingTimeline.add({
+                targets: '.nav',
+                opacity: [0, 1],
+                translateY: [-20, 0],
+                duration: 600,
+            }, '-=400');
+
+            // 메인 박스 등장 (스케일 + 페이드)
+            loadingTimeline.add({
+                targets: '.main-box',
+                opacity: [0, 1],
+                scale: [0.92, 1],
+                duration: 1000,
+                easing: 'easeOutCubic',
+            }, '-=300');
+
+            // ============================================================
+            // 2. 히어로 텍스트 애니메이션 (글자별 등장) - HTML 태그 보존
+            // ============================================================
+            setTimeout(() => {
+                const textElements = document.querySelectorAll('.main-text-content p');
+
+                // 텍스트 노드를 재귀적으로 탐색하여 글자별 span으로 감싸는 함수
+                function wrapTextNodes(element) {
+                    const nodes = Array.from(element.childNodes);
+                    nodes.forEach(node => {
+                        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+                            const fragment = document.createDocumentFragment();
+                            node.textContent.split('').forEach(char => {
+                                if (char === ' ') {
+                                    fragment.appendChild(document.createTextNode(' '));
+                                } else {
+                                    const span = document.createElement('span');
+                                    span.className = 'anime-letter';
+                                    span.style.display = 'inline-block';
+                                    span.style.opacity = '0';
+                                    span.textContent = char;
+                                    fragment.appendChild(span);
+                                }
+                            });
+                            node.parentNode.replaceChild(fragment, node);
+                        } else if (node.nodeType === Node.ELEMENT_NODE) {
+                            // 자식 요소도 재귀적으로 처리 (span.bold 등)
+                            wrapTextNodes(node);
+                        }
+                    });
+                }
+
+                textElements.forEach((el, index) => {
+                    wrapTextNodes(el);
+
+                    // 글자별 애니메이션
+                    anime({
+                        targets: el.querySelectorAll('.anime-letter'),
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        rotateX: [-40, 0],
+                        duration: 800,
+                        delay: anime.stagger(30, { start: 400 + (index * 300) }),
+                        easing: 'easeOutExpo',
+                    });
+                });
+            }, 600);
+
+            // ============================================================
+            // 3. 스크롤 기반 애니메이션 - YouTube 타이틀
+            // ============================================================
+            const youtubeTitle = document.querySelector('.youtube-title');
+            if (youtubeTitle) {
+                const ytObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            anime({
+                                targets: '.youtube-title',
+                                opacity: [0, 1],
+                                translateY: [40, 0],
+                                duration: 800,
+                                easing: 'easeOutExpo',
+                            });
+                            ytObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+                youtubeTitle.style.opacity = '0';
+                ytObserver.observe(youtubeTitle);
+            }
+
+            // ============================================================
+            // 4. 스크롤 기반 - 인트로 섹션 패럴랙스 & 텍스트 애니메이션
+            // ============================================================
+            const introSection = document.querySelector('.bbs-intro-container');
+            const introTitle = document.querySelector('.bbs-intro-title');
+            const introText = document.querySelector('.bbs-intro-text');
+            const highlightCards = document.querySelectorAll('.bbs-intro-highlight-card');
+
+            if (introSection) {
+                let introAnimated = false;
+
+                const introObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !introAnimated) {
+                            introAnimated = true;
+
+                            // 인트로 타이틀 애니메이션
+                            anime({
+                                targets: '.bbs-intro-title',
+                                opacity: [0, 1],
+                                translateX: [-60, 0],
+                                duration: 1000,
+                                easing: 'easeOutExpo',
+                            });
+
+                            // 인트로 텍스트 애니메이션
+                            anime({
+                                targets: '.bbs-intro-text',
+                                opacity: [0, 1],
+                                translateX: [-40, 0],
+                                duration: 1000,
+                                delay: 200,
+                                easing: 'easeOutExpo',
+                            });
+
+                            // 하이라이트 카드들 스태거 애니메이션
+                            anime({
+                                targets: '.bbs-intro-highlight-card',
+                                opacity: [0, 1],
+                                translateY: [30, 0],
+                                scale: [0.9, 1],
+                                duration: 800,
+                                delay: anime.stagger(150, { start: 400 }),
+                                easing: 'easeOutExpo',
+                            });
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                introObserver.observe(introSection);
+            }
+
+            // ============================================================
+            // 5. 스크롤 진행률 연동 - BBS 스타 이미지 회전 & 스케일
+            // ============================================================
+            const bbsStar = document.querySelector('.bbs-star-image');
+            if (bbsStar && introSection) {
+                let ticking = false;
+
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            const rect = introSection.getBoundingClientRect();
+                            const viewHeight = window.innerHeight;
+
+                            if (rect.top < viewHeight && rect.bottom > 0) {
+                                const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
+                                const clampedProgress = Math.max(0, Math.min(1, progress));
+
+                                // 스크롤 진행률에 따른 회전 및 스케일
+                                const rotation = (clampedProgress - 0.5) * 25; // -12.5 ~ 12.5 degrees
+                                const scale = 0.85 + (clampedProgress * 0.2); // 0.85 ~ 1.05
+                                const translateY = (1 - clampedProgress) * 30;
+
+                                anime.set(bbsStar, {
+                                    rotate: rotation,
+                                    scale: scale,
+                                    translateY: translateY,
+                                });
+                            }
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+            }
+
+            // ============================================================
+            // 6. 부서 카드 스태거 애니메이션 (스크롤 트리거)
+            // ============================================================
+            const deptSection = document.querySelector('.department-container');
+            if (deptSection) {
+                let deptAnimated = false;
+
+                const deptObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !deptAnimated) {
+                            deptAnimated = true;
+
+                            // 부서 타이틀
+                            anime({
+                                targets: '.department-title',
+                                opacity: [0, 1],
+                                translateX: [-50, 0],
+                                duration: 800,
+                                easing: 'easeOutExpo',
+                            });
+
+                            // 부서 카드들 그리드 웨이브 효과
+                            anime({
+                                targets: '.department-card',
+                                opacity: [0, 1],
+                                translateY: [60, 0],
+                                scale: [0.8, 1],
+                                rotate: [-3, 0],
+                                duration: 800,
+                                delay: anime.stagger(100, {
+                                    grid: [5, 1],
+                                    from: 'first'
+                                }),
+                                easing: 'easeOutExpo',
+                            });
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                // 초기 상태 설정
+                document.querySelectorAll('.department-card').forEach(card => {
+                    card.style.opacity = '0';
+                });
+                document.querySelector('.department-title').style.opacity = '0';
+
+                deptObserver.observe(deptSection);
+            }
+
+            // ============================================================
+            // 7. YouTube 비디오 카드 로드 애니메이션
+            // ============================================================
+            // MutationObserver로 동적 로드되는 비디오 카드 감지
+            const videoGrid = document.getElementById('videoGrid');
+            if (videoGrid) {
+                const videoMutationObserver = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.addedNodes.length > 0) {
+                            const newCards = Array.from(mutation.addedNodes).filter(
+                                node => node.classList && node.classList.contains('video-card')
+                            );
+
+                            if (newCards.length > 0) {
+                                anime({
+                                    targets: newCards,
+                                    opacity: [0, 1],
+                                    translateY: [15, 0],
+                                    scale: [0.95, 1],
+                                    duration: 200,
+                                    delay: anime.stagger(10),
+                                    easing: 'easeOutCubic',
+                                });
+                            }
+                        }
+                    });
+                });
+
+                videoMutationObserver.observe(videoGrid, { childList: true });
+            }
+
+            // ============================================================
+            // 8. 푸터 호버 애니메이션
+            // ============================================================
+            const footerBadge = document.querySelector('.footer-badge');
+            if (footerBadge) {
+                footerBadge.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: footerBadge,
+                        rotate: [0, 360],
+                        scale: [1, 1.1],
+                        duration: 600,
+                        easing: 'easeOutElastic(1, .6)',
+                    });
+                });
+
+                footerBadge.addEventListener('mouseleave', () => {
+                    anime({
+                        targets: footerBadge,
+                        scale: [1.1, 1],
+                        duration: 300,
+                        easing: 'easeOutQuad',
+                    });
+                });
+            }
+
+            // ============================================================
+            // 9. 메인 버튼 호버 진동 효과
+            // ============================================================
+            document.querySelectorAll('.main-btn').forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: btn,
+                        scale: [1, 1.05],
+                        duration: 200,
+                        easing: 'easeOutQuad',
+                    });
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    anime({
+                        targets: btn,
+                        scale: [1.05, 1],
+                        duration: 200,
+                        easing: 'easeOutQuad',
+                    });
+                });
+            });
+
+            console.log('🎬 Anime.js animations initialized successfully!');
         });
     </script>
 </body>
