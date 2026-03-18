@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>31기 합격자 발표</title>
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="BBS" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
         @font-face {
             font-family: 'BEANPOLE_2020';
@@ -176,23 +184,24 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
         <h1>31기 합격자 발표</h1>
-        
+
         <div class="input-group">
             <label for="name">이름</label>
             <input type="text" id="name" placeholder="예: 전서현">
         </div>
-        
+
         <div class="input-group">
             <label for="studentId">학번</label>
             <input type="text" id="studentId" placeholder="예: 10101">
         </div>
 
         <button id="searchBtn">결과 확인하기</button>
-        
+
         <div class="footer">
             결과는 새 탭으로 열립니다.<br>
         </div>
@@ -201,7 +210,7 @@
     <script type="module">
         // 1. 필요한 도구만 가져오기 (getDoc, doc 사용)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, getDoc } 
+        import { getFirestore, doc, getDoc }
             from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         // ▼▼▼ 본인의 Firebase 설정값으로 덮어쓰세요 ▼▼▼
@@ -307,7 +316,7 @@
             try {
                 // 3. [보안 핵심] 학번+이름 조합으로 ID 직접 조회 (검색 아님!)
                 // 예: 사용자가 10101, 김방송 입력 -> "10101김방송" 문서를 찾음
-                const docId = studentId + name; 
+                const docId = studentId + name;
                 const docRef = doc(db, "applicants", docId);
                 const docSnap = await getDoc(docRef);
 
@@ -316,7 +325,7 @@
                 if (docSnap.exists()) {
                     // 문서가 존재함 (즉, 합격자 명단 or 지원자 명단에 있음)
                     const data = docSnap.data();
-                    
+
                     if (data.isPassed === true) {
                         // 합격
                         const dept = data.department ? data.department : "부서 미정";
@@ -698,13 +707,21 @@
             } catch (error) {
                 console.error("시스템 에러:", error);
                 popup.document.body.innerHTML = `
-                    <div>
-                        <h3 style="color:red;">시스템 오류</h3>
-                        <p>관리자에게 문의해주세요.</p>
+                    <div style="display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px;">
+                        <div style="text-align:center; max-width:500px;">
+                            <h2 style="color:#ff8787; margin-bottom:20px;">⚠️ 조회 오류</h2>
+                            <p style="color:white; font-size:18px; margin-bottom:30px;">
+                                조회 기간이 아니거나 잘못된 요청입니다.
+                            </p>
+                            <button onclick="window.close()" style="padding:12px 30px; background:#6fa8e8; color:white; border:none; border-radius:8px; cursor:pointer; font-size:16px;">
+                                닫기
+                            </button>
+                        </div>
                     </div>
                 `;
             }
         }
     </script>
 </body>
+
 </html>
