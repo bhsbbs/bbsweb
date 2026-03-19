@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBS - 방어진고등학교 방송국</title>
+    <title>BBS - 31기 모집결과 발표</title>
     <!-- SEO -->
     <script type="application/ld+json">
     {
@@ -15,14 +15,12 @@
       "url" : "https://bbs.mua.co.kr/"
     }
     </script>
-
-    <meta name="Keywords" content="BBS" />
-    <meta name="keywords" content="방어진고등학교, 방송부, 고등학교, 방송국, 방고, 방어진고">
-    <meta name="description" content="울산 방어진고등학교 BBS 공식 홈페이지로, BBS에 대한 정보를 담고 있습니다.">
+    <meta name="keywords" content="방어진고등학교, 방송부, 고등학교, 방송국, 방고, 방어진고, BBS, 31기">
+    <meta name="description" content="울산 방어진고등학교 BBS 31기 모집결과 발표">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="BBS - 방어진고등학교 방송국">
-    <meta property="og:description" content="울산 방어진고등학교 BBS 공식 홈페이지">
+    <meta property="og:title" content="BBS - 31기 모집결과 발표">
+    <meta property="og:description" content="울산 방어진고등학교 BBS 31기 모집결과를 확인하세요.">
     <meta property="og:image" content="https://bbs.mua.co.kr/ii.png">
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -31,27 +29,33 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="BBS" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <!-- AOS Animation CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- Anime.js Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <link rel="preload" href="background.webp" as="image" fetchpriority="high">
-    <link rel="stylesheet preload" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MR3NRQB9JP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-MR3NRQB9JP');
     </script>
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preload" href="background.webp" as="image" fetchpriority="high">
+    <link rel="stylesheet preload" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
         @font-face {
             font-family: 'BEANPOLE_2020';
             src: url('https://cdn.jsdelivr.net/gh/wooin21/web/fonts/etc/BEANPOLE2020-Light.woff') format('woff');
             font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'KBLJump';
+            src: url('KBLJump_EB_Extended.otf') format('opentype'),
+                 url('KBLJump_EB_Extended.woff2') format('woff2');
+            font-weight: 800;
             font-style: normal;
         }
 
@@ -68,3372 +72,526 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
             font-family: 'BEANPOLE_2020', sans-serif;
-            overflow-x: hidden;
-            background: url('background.webp') center/cover no-repeat fixed;
-            overflow-y: auto;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Loading Screen Styles */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #050505;
+            background: #151515;
+            color: white;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100000;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            flex-direction: column;
         }
 
-        .loading-screen.hide .loading-logo {
-            /* Handled by Anime.js now */
-        }
-
-        .loading-screen.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loading-circle-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-
-        .loading-logo {
-            position: relative;
-            z-index: 10;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* animation: pulseGlow 2s ease-in-out infinite; */
-            /* Animation handled by JS */
-            opacity: 0;
-            transform: scale(0.8);
-        }
-
-        .loading-logo svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 0 20px rgba(111, 168, 232, 0.6));
-        }
-
-        @keyframes pulseGlow {
-            0% {
-                transform: scale(0.95);
-                filter: drop-shadow(0 0 15px rgba(111, 168, 232, 0.5));
-            }
-
-            100% {
-                transform: scale(1);
-                filter: drop-shadow(0 0 25px rgba(111, 168, 232, 0.8));
-            }
-        }
-
-        /* Main Box Container */
+        /* ===== LAYOUT ===== */
         .container {
             display: flex;
             flex-direction: column;
-            align-items: stretch;
-            position: relative;
             width: 100%;
             max-width: 1920px;
-            min-height: 85vh;
+            height: 100vh;
+            height: 100dvh;
             margin: 0 auto;
-            box-sizing: border-box;
+            padding: 0;
         }
 
-        /* Liquid Cursor Styles - Primary Interface Refinement: Sophisticated Dark Tint */
-        .liquid-cursor {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 32px;
-            /* Adjusted size for balance */
-            height: 32px;
-            background: rgba(0, 0, 0, 0.3);
-            /* Sophisticated Dark Tint */
-            backdrop-filter: blur(8px) saturate(180%);
-            -webkit-backdrop-filter: blur(8px) saturate(180%);
-
-            /* High visibility border: Light inner, Subtle dark outer */
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
-
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 100000;
-            will-change: transform, width, height, border-radius;
-            transform: translate3d(-50%, -50%, 0);
-            transition:
-                width 0.3s cubic-bezier(0.19, 1, 0.22, 1),
-                height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
-                border-radius 0.3s cubic-bezier(0.19, 1, 0.22, 1),
-                background 0.3s ease,
-                border 0.3s ease;
-            display: none;
-        }
-
-        .liquid-cursor.snapped {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            border-radius: 99px !important;
-
-            /* Disable blur when snapped to show button text clearly */
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-
-            transition:
-                width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-                height 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-                border-radius 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-                background 0.3s ease;
-        }
-
-        /* Scale up when hovering any interactive element */
-        .liquid-cursor.hovering:not(.snapped) {
-            transform: translate3d(-50%, -50%, 0) scale(1.8);
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-
-        /* header bar using flex */
-        /* Header Bar - Transparent by default */
-        .header-bar {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            /* Center horizontally */
-            transform: translateX(-50%);
-            /* Center horizontally */
-            width: 100%;
-            max-width: 1920px;
-            /* Restore max-width constraint */
-            height: 80px;
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            flex: 1;
+            position: relative;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px;
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-
-            /* Initial State: Transparent */
-            background: transparent;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            border-bottom: 1px solid transparent;
-            box-shadow: none;
-            border-radius: 0 0 2vw 2vw;
-            /* Ensure children (Liquid Glass) stay within this container */
-            box-sizing: border-box;
+            flex-direction: column;
+            min-height: 0;
         }
 
-        /* Scrolled State */
-        .header-bar.scrolled {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        /* Liquid Glass Layers - Hidden by default */
-        .liquidGlass-effect,
-        .liquidGlass-tint,
-        .liquidGlass-shine {
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        /* Show Liquid Glass when scrolled */
-        .header-bar.scrolled .liquidGlass-effect,
-        .header-bar.scrolled .liquidGlass-tint,
-        .header-bar.scrolled .liquidGlass-shine {
-            opacity: 1;
-        }
-
-        /* Pure CSS Layers for High Distortion */
-        .liquidGlass-effect {
-            position: absolute;
-            z-index: 0;
-            inset: 0;
-            /* Slight blur to smooth the background before distortion */
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            filter: url(#glass-distortion);
+        .hero-video-container {
+            flex: 1;
+            position: relative;
+            border-radius: 0 0 80px 80px;
             overflow: hidden;
-            border-radius: inherit;
+            background: #111;
+            min-height: 0;
         }
 
-        /* Parallax Style */
-        .bbs-star-image {
-            transition: transform 0.15s ease-out !important;
-        }
-
-        .liquidGlass-tint {
-            z-index: 1;
+        .hero-video-container video {
             position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: inherit;
-        }
-
-        .liquidGlass-shine {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            overflow: hidden;
-            /* Clean white highlights, no dark shadows */
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
-            pointer-events: none;
-            border-radius: inherit;
-        }
-
-        .header-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg,
-                    transparent 0%,
-                    rgba(255, 255, 255, 0.6) 50%,
-                    transparent 100%);
-            pointer-events: none;
-        }
-
-        .header-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(180deg,
-                    rgba(255, 255, 255, 0.6) 0%,
-                    transparent 40%,
-                    rgba(255, 255, 255, 0.1) 100%);
-            pointer-events: none;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(6px) saturate(160%) contrast(1.15);
-            -webkit-backdrop-filter: blur(6px) saturate(160%) contrast(1.15);
-            padding: 10px 20px;
-            border-radius: 90px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .logo {
-            width: 80px;
-            height: auto;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3px;
-            margin-bottom: 4px;
-        }
-
-        .logo svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .subtitle {
-            padding-top: 3.5%;
-            padding-right: 2%;
-            font-size: clamp(14px, 1.2vw, 20px);
-            font-weight: 500;
-            color: white;
-            white-space: nowrap;
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(6px) saturate(160%) contrast(1.15);
-            -webkit-backdrop-filter: blur(6px) saturate(160%) contrast(1.15);
-            padding: 6px 10px;
-            border-radius: 90px;
-            min-width: 240px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            position: relative;
-            z-index: 10;
-        }
-
-        .nav button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: clamp(14px, 1.8vw, 28px);
-            font-family: 'BEANPOLE_2020', sans-serif;
-            cursor: pointer;
-            transition: opacity 0.3s;
-            padding: 6px 8px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .nav button:hover {
-            opacity: 0.8;
-        }
-
-        .nav button:active {
-            background: rgba(255, 255, 255, 0.15);
-            transform: scale(0.98);
-        }
-
-        .main-c1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-            padding-top: 3vh;
-            position: relative;
-        }
-
-        .main-box {
-            position: relative;
-            margin: 6vh auto 0;
-            width: 95%;
-            max-width: 1820px;
-            height: 70vh;
-            min-height: 420px;
-            border-radius: 5.9vw;
-            background: linear-gradient(180deg, #4a82c3 0%, #5f4397 100%);
-            overflow: hidden;
-        }
-
-        .main-box video {
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: inherit;
-            z-index: 1;
-            pointer-events: none;
-            display: block;
-            /* 동영상을 살짝 어둡게 처리해서 위 텍스트 가독성 향상 */
-            filter: brightness(0.8) contrast(1.05);
+            filter: brightness(0.55) contrast(1.05) saturate(0.95);
         }
 
-
-
-        .main-text {
-            position: absolute;
-            left: 6%;
-            right: 6%;
-            bottom: 6%;
-            color: white;
-            z-index: 20;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 30px;
-            width: auto;
-        }
-
-        .main-text-content {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .main-text p {
-            font-size: clamp(28px, 6vw, 96px);
-            line-height: 1.02;
-            margin: 0;
-            word-break: keep-all;
-            white-space: normal;
-        }
-
-        .main-buttons {
-            display: flex;
-            gap: 12px;
-            flex-direction: column;
-            flex-shrink: 0;
-            margin-right: auto;
-            margin-left: 30px;
-        }
-
-        .main-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            height: 5.5vh;
-            min-height: 48px;
-            max-height: 65px;
-            padding: 0 28px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            background:
-                linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%);
-            box-shadow:
-                0 14px 35px rgba(0, 0, 0, 0.45),
-                inset 0 1px 0 rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(14px) saturate(150%);
-            -webkit-backdrop-filter: blur(14px) saturate(150%);
-            color: #f5f7ff;
-            font-size: clamp(14px, 1.6vw, 18px);
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.25s ease-out, background 0.25s ease-out, border-color 0.25s ease-out;
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-            will-change: transform;
-        }
-
-        .main-btn.magnetic-active {
-            transition: transform 0.1s ease-out;
-        }
-
-        .main-btn::before {
+        .hero-video-container::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.45), transparent 55%);
-            opacity: 0.0;
-            transition: opacity 0.25s ease-out, transform 0.25s ease-out;
-            transform: translate3d(-10%, -20%, 0) scale(1.1);
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.2) 0%,
+                transparent 25%,
+                transparent 55%,
+                rgba(0, 0, 0, 0.55) 100%
+            );
             pointer-events: none;
         }
 
-        .main-btn span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .main-btn::after {
-            content: '↗';
-            position: relative;
-            z-index: 1;
-            font-size: 1.1em;
-            transition: transform 0.22s ease-out, opacity 0.22s ease-out;
-            opacity: 0.8;
-        }
-
-        .main-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .main-btn:active {
-            transform: translateY(0);
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.6),
-                0 0 0 1px rgba(130, 173, 255, 0.5);
-        }
-
-        .main-text .bold {
-            font-weight: 700;
-        }
-
-        .arrow-right {
+        /* ===== COUNTDOWN (center of video) ===== */
+        .hero-countdown {
             position: absolute;
-            right: 40px;
-            top: 15%;
-            transform: translateY(-50%);
-            width: 38px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            inset: 0;
             z-index: 10;
-        }
-
-        .arrow-right:hover {
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .arrow-left {
-            position: absolute;
-            left: 40px;
-            top: 96%;
-            transform: translateY(-50%);
-            width: 36px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            z-index: 10;
-        }
-
-        .arrow-left:hover {
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .footer-overlay {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            min-height: 12vh;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-            padding: 40px 5%;
-            gap: 40px;
-            box-sizing: border-box;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn {
-            display: inline-flex;
-            flex-direction: row;
-            height: 5.5vh;
-            min-height: 48px;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #6fa8e8 0%, #5f4397 100%);
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
-            padding: 0 20px;
-            box-shadow: 0 8px 20px rgba(79, 67, 151, 0.3);
-            will-change: transform;
-        }
-
-        .btn.magnetic-active {
-            transition: transform 0.1s ease-out;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(79, 67, 151, 0.5);
-            background: linear-gradient(135deg, #7eb4f0 0%, #6f53a7 100%);
-        }
-
-        .btn-apply,
-        .btn-youtube {
-            position: relative;
-            z-index: 10;
-            width: auto;
-            min-width: 160px;
-        }
-
-        .btn span {
-            color: white;
-            font-size: clamp(14px, 1.8vw, 18px);
-            font-weight: 700;
-        }
-
-        .footer-btn {
-            display: flex;
-            flex-direction: row;
-            gap: 15px;
-            flex-shrink: 0;
-        }
-
-        .footer-info {
-            display: flex;
-            flex-direction: row;
-            position: relative;
-            z-index: 10;
-            color: white;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .footer-info-text {
+            pointer-events: none;
             display: flex;
             flex-direction: column;
-            margin-top: 13px;
-            margin-left: 20px;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 4%; /* optical adjust */
+            gap: 12px;
+            text-align: center;
         }
 
+        .countdown-label {
+            font-family: 'Pretendard', sans-serif;
+            font-size: clamp(14px, 2vw, 20px);
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
 
-        .footer-title-wrapper {
+        .countdown-timer {
+            font-family: 'KBLJump', 'Pretendard', sans-serif;
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            text-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .countdown-timer.ended {
+            font-size: clamp(36px, 8vw, 96px);
+        }
+
+        .countdown-sub {
+            font-family: 'Pretendard', sans-serif;
+            font-size: clamp(13px, 1.8vw, 18px);
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.05em;
+        }
+
+        /* 버튼 영역 */
+        .hero-actions {
+            position: absolute;
+            bottom: 40px;
+            right: 80px;
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 8px;
-        }
-
-        .footer-info .title {
-            font-size: clamp(18px, 2vw, 24px);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            font-family: 'BEANPOLE_2020', sans-serif;
-        }
-
-        .footer-badge {
-            width: 80px;
-            height: 80px;
-            flex-shrink: 0;
-            object-fit: contain;
-        }
-
-        .footer-info .address {
-            font-size: clamp(14px, 1.5vw, 16px);
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.5;
-        }
-
-        .footer-family {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            margin-left: auto;
-        }
-
-        /* Footer Marquee */
-        .footer-marquee {
-            width: 100%;
-            background: rgb(115, 0, 255);
-            padding: 8px 0;
-            overflow: hidden;
-        }
-
-        .footer-marquee-inner {
-            display: inline-flex;
-            align-items: center;
-            white-space: nowrap;
-            width: max-content;
-            animation: footerMarquee 50s linear infinite;
-        }
-
-        .footer-marquee-text {
-            display: inline-block;
-            font-family: 'SlowGothic';
-            font-size: clamp(12px, 1.4vw, 15px);
-            letter-spacing: 0.2em;
-            color: rgb(255, 255, 255);
-            padding: 0;
-            margin-right: 2.5rem;
-        }
-
-        @keyframes footerMarquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .family-select {
-            padding: 10px 16px;
-            font-size: clamp(12px, 1.2vw, 14px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-family: 'Pretendard', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 140px;
-        }
-
-        .family-select:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .family-select:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: #6fa8e8;
-        }
-
-        .family-select option {
-            background: #1a1a1a;
-            color: white;
-            padding: 8px;
-        }
-
-        /* Popup Modal */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .popup-overlay.active {
-            display: flex;
-        }
-
-        .popup-content {
-            position: relative;
-            z-index: 10;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 90%;
-            animation: popupSlideIn 0.3s ease-out;
-            overflow: hidden;
-        }
-
-        @keyframes popupSlideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .popup-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .popup-footer {
-            padding: 20px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .popup-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: #333;
-            font-family: 'Pretendard', sans-serif;
-            cursor: pointer;
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .popup-checkbox input {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-        }
-
-        .popup-close-btn {
-            background: linear-gradient(135deg, #6fa8e8 0%, #5f4397 100%);
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 700;
-            font-family: 'Pretendard', sans-serif;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .popup-close-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(79, 67, 151, 0.4);
-        }
-
-        /* Mobile Navigation Toggle */
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 30;
-            transition: transform 0.3s ease;
-            padding: 8px 12px;
-        }
-
-        .hamburger:hover {
-            transform: scale(1.1);
-        }
-
-        /* Nav active state with animation */
-        .nav {
-            transition: all 0.3s ease;
-        }
-
-        .nav.active {
-            display: flex;
-            animation: slideDown 0.3s ease forwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            to {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-        }
-
-        .nav button {
-            transition: all 0.2s ease;
-        }
-
-        .nav button:active {
-            background: rgba(255, 255, 255, 0.15);
-            transform: scale(0.98);
-        }
-
-        .youtube-container {
-            width: 100%;
-            max-width: 1920px;
-            margin: 0 auto;
-            padding: 40px 3%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
-            border-radius: 2vw 2vw 0 0;
-        }
-
-        .youtube-title {
-            font-size: clamp(24px, 4vw, 48px);
-            color: white;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .youtube-wrapper {
-            max-width: 1820px;
-            margin: 0 auto;
-            position: relative;
             z-index: 10;
         }
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        @media (min-width: 1921px) {
-            .youtube-wrapper {
-                position: relative;
-                z-index: 10;
-            }
-
-            .video-grid {
-                display: flex;
-                gap: 20px;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                padding: 10px 0;
-                scroll-padding: 10px;
-                cursor: grab;
-                scroll-snap-type: x mandatory;
-                user-select: none;
-            }
-
-            .video-grid.dragging {
-                scroll-behavior: auto;
-                cursor: grabbing;
-            }
-
-            .video-grid::-webkit-scrollbar {
-                display: none;
-            }
-
-            .video-card {
-                flex: 0 0 280px;
-            }
-
-            .slide-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(255, 255, 255, 0.2);
-                border: none;
-                color: white;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                cursor: pointer;
-                font-size: 24px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                z-index: 10;
-            }
-
-            .slide-btn:hover {
-                background: rgba(255, 255, 255, 0.4);
-                transform: translateY(-50%) scale(1.1);
-            }
-
-            .slide-btn.prev {
-                left: -30px;
-            }
-
-            .slide-btn.next {
-                right: -30px;
-            }
-        }
-
-        .video-card {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .video-thumbnail {
-            width: 100%;
-            height: 160px;
-            background: #000;
-            object-fit: cover;
-            display: block;
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        .video-info {
-            padding: 15px;
-            color: white;
-        }
-
-        .video-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0 0 10px 0;
-            line-height: 1.4;
-            display: -webkit-box;
-            line-clamp: 2;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .video-date {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .loading-spinner {
-            text-align: center;
-            color: white;
-            padding: 40px;
-            font-size: 18px;
-        }
-
-        .loading-spinner::after {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-left: 10px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* BBS Introduction Container - Fullscreen, Large Layout */
-        .bbs-intro-container {
-            width: 100%;
-            min-height: 100vh;
-            padding: 120px 5% 120px;
-            background: linear-gradient(180deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bbs-intro-content {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .bbs-intro-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .bbs-star-image {
-            width: 100%;
-            max-width: 440px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(111, 168, 232, 0.3));
-        }
-
-        .bbs-intro-text-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 26px;
-        }
-
-        .bbs-intro-pill {
+        .btn-result {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 6px 16px;
+            padding: 22px 44px;
+            border: none;
             border-radius: 999px;
-            background: rgba(111, 168, 232, 0.16);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: rgba(222, 231, 255, 0.9);
-            font-size: 12px;
-            font-family: 'Pretendard', sans-serif;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            width: fit-content;
-        }
-
-        .bbs-intro-pill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: #6fa8e8;
-            box-shadow: 0 0 12px rgba(111, 168, 232, 0.8);
-        }
-
-        /* Scroll reveal animation (요즘식 부드러운 등장) */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(60px) scale(0.96);
-            transition:
-                opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: opacity, transform;
-        }
-
-        .scroll-animate.in-view {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* Staggered Delays */
-        .delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .delay-2 {
-            transition-delay: 0.25s;
-        }
-
-        .delay-3 {
-            transition-delay: 0.4s;
-        }
-
-        .delay-4 {
-            transition-delay: 0.55s;
-        }
-
-        .delay-5 {
-            transition-delay: 0.7s;
-        }
-
-        /* BBS Star specialized animation */
-        .bbs-star-image.scroll-animate {
-            transform: translateY(40px) scale(0.8) rotate(-5deg);
-            transition:
-                opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .bbs-star-image.scroll-animate.in-view {
-            transform: translateY(0) scale(1) rotate(0deg);
-        }
-
-        .bbs-intro-title {
-            font-size: clamp(36px, 5vw, 68px);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             color: white;
+            font-size: 22px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            font-family: 'BEANPOLE_2020', sans-serif;
-            margin: 0;
-            line-height: 1.18;
-        }
-
-        .bbs-intro-text {
-            font-size: clamp(16px, 1.9vw, 22px);
-            color: rgba(255, 255, 255, 0.88);
-            line-height: 1.9;
             font-family: 'Pretendard', sans-serif;
-            margin: 0;
-            letter-spacing: 0.02em;
-        }
-
-        .bbs-intro-highlights {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 12px;
-        }
-
-        .bbs-intro-highlight-card {
-            padding: 16px 18px;
-            border-radius: 18px;
-            background: radial-gradient(circle at 0% 0%, rgba(32, 20, 49, 0.24), rgba(10, 10, 20, 0.6));
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(18px);
-        }
-
-        .bbs-intro-highlight-title {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #e2e7ff;
-            margin-bottom: 6px;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .bbs-intro-highlight-text {
-            font-size: 17px;
-            line-height: 1.6;
-            color: rgba(230, 235, 255, 0.9);
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .bbs-asterisk {
-            color: #6fa8e8;
-            font-weight: 600;
-        }
-
-        .bbs-equipment-note {
-            font-size: clamp(11px, 1.2vw, 14px);
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
-            font-family: 'Pretendard', sans-serif;
-            margin: 0;
-            margin-top: 10px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .bbs-note-asterisk {
-            color: #6fa8e8;
-            font-weight: 600;
-        }
-
-        /* Department Container Styles */
-        .department-container {
-            width: 100%;
-            padding: 60px 3%;
-            background: #0f0f0f;
-        }
-
-        .department-title {
-            font-size: clamp(24px, 4vw, 48px);
-            color: white;
-            margin-bottom: 50px;
-            text-align: left;
-            font-weight: 600;
-            max-width: 1820px;
-            margin: 0 auto 50px auto;
-        }
-
-        .department-grid {
-            max-width: 1820px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            perspective: 1000px;
-        }
-
-        .department-card {
-            background: linear-gradient(135deg, rgba(111, 168, 232, 0.08) 0%, rgba(95, 67, 151, 0.08) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 40px 30px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            position: relative;
-            min-height: 200px;
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
+            white-space: nowrap;
         }
 
-        .department-grid .department-card:hover {
-            opacity: 1;
+        .btn-result:hover {
+            background: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .department-grid:has(.department-card:hover) .department-card:not(:hover) {
-            opacity: 0.4;
-            filter: blur(2px);
+        .btn-result:active {
+            transform: translateY(0);
         }
 
-        .department-card:hover {
-            background: linear-gradient(135deg, rgba(111, 168, 232, 0.15) 0%, rgba(95, 67, 151, 0.15) 100%);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.15) translateZ(0);
-            z-index: 100;
-        }
-
-        .department-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #6fa8e8 0%, #5f4397 100%);
-            border-radius: 16px;
-            display: flex;
+        .btn-home {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-
-        .department-card:hover .department-icon {
-            transform: scale(1.15);
-        }
-
-        .department-name {
-            font-size: clamp(18px, 2.5vw, 24px);
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -0.5px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
         }
 
-        .department-roles {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .btn-home:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
-        .department-card:hover .department-roles {
-            opacity: 1;
-            max-height: 200px;
+        .btn-home:active {
+            transform: translateY(0);
         }
 
-        .department-description {
-            font-size: clamp(14px, 1.8vw, 16px);
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0;
-            line-height: 1.6;
-            font-family: 'Pretendard', sans-serif;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.3s ease, max-height 0.3s ease;
+        .btn-home svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
         }
 
-        .department-card:hover .department-description {
-            opacity: 1;
-            max-height: 300px;
-        }
-
-        .department-role {
-            font-size: clamp(14px, 1.8vw, 16px);
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0;
-            padding-left: 20px;
+        /* ===== BLUE BANNER SECTION ===== */
+        .blue-banner {
             position: relative;
+            border-radius: 80px 80px 0 0;
+            padding: 36px 5% 24px;
+            z-index: 5;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+        }
+
+        .banner-top-row {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-logo {
+            width: 68px;
+            height: auto;
+        }
+
+        .banner-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slogan-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.95;
+        }
+
+        .banner-bottom-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-title {
+            font-size: clamp(36px, 7.5vw, 60px);
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            white-space: nowrap;
+            font-family: 'KBLJump', 'BEANPOLE_2020', sans-serif;
+        }
+
+        .banner-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            margin-bottom: 6px;
+        }
+
+        .banner-arrow svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .banner-line {
+            flex: 1;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+            min-width: 40px;
+            margin-bottom: 14px;
+        }
+
+        .banner-date {
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
             font-family: 'Pretendard', sans-serif;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            margin-bottom: 5px;
         }
 
-        .department-role::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #6fa8e8;
+        /* ===== ANIMATIONS ===== */
+        .anim-hidden {
+            opacity: 0;
         }
 
-        @media (max-width: 1024px) {
-            .bbs-intro-container {
-                padding: 60px 3%;
-            }
-
-            .bbs-intro-content {
-                grid-template-columns: 1fr;
-                gap: 36px;
-            }
-
-            .bbs-intro-title {
-                font-size: clamp(24px, 4vw, 40px);
-            }
-
-            .bbs-intro-text {
-                font-size: clamp(14px, 1.6vw, 18px);
-            }
-
-            .bbs-star-image {
-                max-width: 300px;
-            }
-
-            .bbs-intro-highlights {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 14px;
-            }
-
-            .bbs-intro-highlight-card {
-                padding: 14px 14px;
-            }
-
-            .youtube-container {
-                padding: 35px 3%;
-            }
-
-            .youtube-title {
-                margin-bottom: 25px;
-            }
-
-            .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-                gap: 15px;
-            }
-
-            .department-container {
-                padding: 40px 3%;
-            }
-
-            .department-title {
-                margin-bottom: 35px;
-            }
-
-            .department-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-            }
-
-            .department-card {
-                padding: 25px;
-                min-height: auto;
-            }
-
-            .department-card:hover {
-                transform: scale(1.08);
-            }
-
-            .department-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 28px;
-            }
-
-            .department-name {
-                font-size: clamp(16px, 2.2vw, 20px);
-            }
-
-            .department-description {
-                font-size: clamp(12px, 1.5vw, 14px);
-            }
-        }
-
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-
-            /* 모바일에서 Liquid Cursor 완전 숨김 */
-            .liquid-cursor {
-                display: none !important;
-                visibility: hidden !important;
+            .hero-video-container {
+                border-radius: 0 0 48px 48px;
             }
 
-            .bbs-intro-container {
-                padding: 40px 4% 45px;
-            }
-
-            .bbs-intro-content {
-                grid-template-columns: 1fr;
-                gap: 26px;
-            }
-
-            .bbs-intro-title {
-                font-size: clamp(20px, 3.5vw, 32px);
-            }
-
-            .bbs-intro-text {
-                font-size: clamp(13px, 3.5vw, 16px);
-            }
-
-            .bbs-star-image {
-                max-width: 240px;
-            }
-
-            .bbs-intro-highlights {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-top: 10px;
-            }
-
-            .bbs-intro-highlight-card {
-                padding: 12px 13px;
-            }
-
-            .youtube-container {
-                padding: 25px 2%;
-            }
-
-            .youtube-title {
-                font-size: clamp(18px, 5vw, 28px);
-                margin-bottom: 18px;
-            }
-
-            .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            .hero-actions {
+                bottom: 24px;
+                right: 48px;
                 gap: 10px;
             }
 
-            .video-card {
-                min-height: 200px;
+            .btn-result {
+                padding: 16px 28px;
+                font-size: 17px;
             }
 
-            .video-card-title {
-                font-size: 12px;
+            .btn-home {
+                width: 56px;
+                height: 56px;
             }
 
-            .video-card-date {
-                font-size: 10px;
+            .btn-home svg {
+                width: 22px;
+                height: 22px;
             }
 
-            .department-container {
-                padding: 35px 5%;
+            .blue-banner {
+                border-radius: 48px 48px 0 0;
+                padding: 28px 5% 20px;
             }
 
-            .department-title {
-                margin-bottom: 25px;
-                font-size: clamp(22px, 6vw, 30px);
-                margin-left: 0;
+            .banner-slogan-img {
+                height: 32px;
             }
 
-            .department-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+            .banner-top-row {
+                margin-bottom: 12px;
             }
 
-            .department-card {
-                padding: 20px;
-                gap: 12px;
-                min-height: auto;
+            .banner-title {
+                font-size: clamp(26px, 7vw, 42px);
             }
 
-            .department-grid:has(.department-card:hover) .department-card:not(:hover) {
-                opacity: 1;
-                filter: none;
+            .banner-arrow {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 3px;
             }
 
-            .department-card:hover {
-                transform: scale(1.02);
+            .banner-arrow svg {
+                width: 24px;
+                height: 24px;
             }
 
-            .department-icon {
-                width: 52px;
-                height: 52px;
-                font-size: 26px;
+            .banner-date {
+                font-size: clamp(14px, 2.8vw, 18px);
             }
 
-            .department-name {
-                font-size: clamp(18px, 4.5vw, 20px);
-            }
-
-            .department-description {
-                font-size: clamp(16px, 3vw, 17px);
-                line-height: 1.4;
-            }
-        }
-
-        /* Tablet and Mobile Responsive */
-        @media (max-width: 1024px) {
-            .header-bar {
-                padding: 4px 2%;
-            }
-
-            .subtitle {
-                font-size: clamp(12px, 1vw, 16px);
-                padding-right: 1%;
-            }
-
-            .nav {
-                min-width: 180px;
-                gap: 4px;
-                display: none;
-            }
-
-            .nav button {
-                font-size: clamp(30px, 1.5vw, 20px);
-                padding: 4px 6px;
-            }
-
-            .hamburger {
-                display: none;
-            }
-
-            .main-box {
-                width: 95%;
-                min-height: 300px;
-            }
-
-            .main-text p {
-                font-size: clamp(40px, 7.5vw, 100px);
-            }
-
-            .btn {
-                height: 5vh;
-                min-height: 40px;
-            }
-
-            .btn span {
-                font-size: clamp(16px, 2vw, 24px);
-            }
-
-            .footer-overlay {
-                height: auto;
-                flex-direction: column;
-                gap: 20px;
-                padding: 30px 3%;
-                min-height: auto;
-                justify-content: center;
-            }
-
-            .footer-info {
-                text-align: center;
-                margin-left: 0;
-            }
-
-            .footer-title-wrapper {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .footer-info .title {
-                font-size: clamp(16px, 4vw, 20px);
-            }
-
-            .footer-badge {
-                width: 70px;
-                height: 70px;
-            }
-
-            .footer-info .address {
-                font-size: clamp(12px, 3vw, 14px);
-            }
-
-            .footer-family {
-                width: 100%;
-                justify-content: center;
-                margin-left: 0;
-            }
-
-            .family-select {
-                width: 100%;
-                max-width: 160px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                font-size: 25px;
-            }
-
-            .header-bar {
-                padding: 10px 4%;
-                flex-wrap: wrap;
-            }
-
-            .logo {
-                width: 65px;
-                margin-left: 10px;
-            }
-
-            .subtitle {
-                display: none;
-            }
-
-            .header-left {
-                flex: 1;
-                justify-content: space-between;
-                padding: 6px 20px;
-            }
-
-            .nav {
-                flex-direction: column;
-                background: rgba(0, 0, 0, 0.3);
-                width: 100%;
-                margin: 0;
-                gap: 0;
-                border-radius: 0;
-                padding: 10px 0;
-                border-radius: 40px;
-            }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .nav button {
-                padding: 12px 20px;
-                text-align: left;
-                border-radius: 0;
-                width: 100%;
-                margin-left: 30px;
-            }
-
-            .nav button:hover {
-                background: rgba(255, 255, 255, 0.1);
-            }
-
-            .main-c1 {
-                height: auto;
-                padding: 80px 0 0 0;
-            }
-
-            .main-box {
-                width: calc(100% - 30px);
-                min-height: 250px;
-                margin: 40px 15px 0;
-
-            }
-
-            .main-text {
-                left: 5%;
-                bottom: 5%;
-                gap: 15px;
-                flex-wrap: wrap;
-            }
-
-            .main-text p {
-                white-space: normal;
-            }
-
-            .main-buttons {
-                flex-direction: row;
-                gap: 8px;
-                width: 100%;
-                margin: 0;
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-
-            .main-btn {
-                flex: 1;
-                min-width: 90px;
-                max-width: 150px;
-                height: 4.5vh;
-                min-height: 36px;
-                font-size: 11px;
-                padding: 0 12px;
-            }
-
-            .arrow-right {
-                right: 20px;
-                top: 18%;
-            }
-
-            .arrow-left {
-                left: 20px;
-                top: 98%;
-            }
-
-            .youtube-container {
-                padding: 30px 2%;
-            }
-
-            .youtube-title {
-                font-size: clamp(18px, 5vw, 32px);
-                margin-bottom: 20px;
-            }
-
-            .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 12px;
-                display: flex;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                padding: 10px 0;
-                scroll-padding: 10px;
-                cursor: grab;
-                scroll-snap-type: x mandatory;
-                user-select: none;
-            }
-
-            .video-grid.dragging {
-                scroll-behavior: auto;
-                cursor: grabbing;
-            }
-
-            .video-grid::-webkit-scrollbar {
-                display: none;
-            }
-
-            .video-card {
-                flex: 0 0 250px;
-            }
-
-            .slide-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(255, 255, 255, 0.2);
-                border: none;
-                color: white;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                cursor: pointer;
-                font-size: 18px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                z-index: 10;
-            }
-
-            .slide-btn:hover {
-                background: rgba(255, 255, 255, 0.3);
-                transform: translateY(-50%) scale(1.1);
-            }
-
-            .slide-btn.prev {
-                left: 10px;
-            }
-
-            .slide-btn.next {
-                right: 10px;
-            }
-
-            .footer-overlay {
-                height: auto;
-                padding: 15px 2%;
-            }
-
-            .footer-overlay {
-                padding: 25px 2%;
-                gap: 15px;
-            }
-
-            .footer-btn {
-                width: 100%;
-                gap: 8px;
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                height: 4.5vh;
-                min-height: 38px;
-                font-size: 14px;
-            }
-
-            .btn span {
-                font-size: clamp(11px, 2.5vw, 14px);
-            }
-
-            .footer-info .title {
-                font-size: clamp(14px, 4vw, 18px);
-                margin-bottom: 6px;
-            }
-
-            .footer-badge {
-                width: 60px;
-                height: 60px;
-            }
-
-            .footer-info .address {
-                font-size: clamp(11px, 3vw, 12px);
+            .banner-line {
+                margin-bottom: 10px;
             }
         }
 
         @media (max-width: 480px) {
-            .bbs-intro-container {
-                padding: 32px 4% 36px;
+            .hero-video-container {
+                border-radius: 0 0 32px 32px;
             }
 
-            .bbs-intro-content {
-                grid-template-columns: 1fr;
-                gap: 22px;
+            .hero-actions {
+                bottom: 16px;
+                right: 32px;
             }
 
-            .bbs-intro-title {
-                font-size: clamp(18px, 3vw, 24px);
+            .blue-banner {
+                border-radius: 32px 32px 0 0;
+                padding: 24px 5% 16px;
             }
 
-            .bbs-intro-text {
-                font-size: clamp(12px, 3.4vw, 14px);
-                line-height: 1.5;
+            .banner-slogan-img {
+                height: 26px;
             }
 
-            .bbs-equipment-note {
-                font-size: clamp(10px, 1vw, 12px);
-            }
-
-            .bbs-star-image {
-                max-width: 210px;
-            }
-
-            .bbs-intro-highlights {
-                grid-template-columns: 1fr;
+            .banner-bottom-row {
+                flex-wrap: wrap;
                 gap: 10px;
-                margin-top: 8px;
             }
 
-            .bbs-intro-highlight-card {
-                padding: 11px 12px;
-            }
-
-            .main-buttons {
-                gap: 6px;
-                flex-direction: column;
-                width: 40%;
-                align-items: flex-end;
-            }
-
-            .main-btn {
-                font-size: 11px;
-                min-height: 36px;
-                max-height: 40px;
-                padding: 0 12px;
-                width: 100%;
-
-            }
-
-            .youtube-container {
-                padding: 20px 1%;
-            }
-
-            .youtube-title {
-                margin-bottom: 15px;
-                font-size: clamp(16px, 5vw, 24px);
-            }
-
-            .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                gap: 8px;
-                display: flex;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                padding: 10px 0;
-                scroll-padding: 10px;
-                cursor: grab;
-                scroll-snap-type: x mandatory;
-                user-select: none;
-            }
-
-
-            .slide-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 14px;
-            }
-
-            .department-container {
-                padding: 30px 4%;
-            }
-
-            .department-title {
-                margin-bottom: 20px;
-                font-size: clamp(20px, 6vw, 26px);
-                margin-left: 0;
-            }
-
-            .department-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .department-card {
-                padding: 16px;
-                gap: 12px;
-            }
-
-            .department-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 22px;
-            }
-
-            .department-name {
-                font-size: clamp(16px, 4vw, 18px);
-            }
-
-            .department-description {
-                font-size: clamp(14px, 3vw, 15px);
-            }
-        }
-
-        /* 769px ~ 1920px: YouTube 리스트를 슬라이더(화살표 + 드래그) 형태로 전환 */
-        @media (min-width: 769px) and (max-width: 1920px) {
-            .youtube-wrapper {
-                position: relative;
-            }
-
-            .video-grid {
-                display: flex;
-                gap: 20px;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                padding: 10px 0;
-                scroll-padding: 10px;
-                cursor: grab;
-                scroll-snap-type: x mandatory;
-                user-select: none;
-            }
-
-            .video-grid.dragging {
-                scroll-behavior: auto;
-                cursor: grabbing;
-            }
-
-            .video-grid::-webkit-scrollbar {
+            .banner-line {
                 display: none;
             }
 
-            .video-card {
-                flex: 0 0 300px;
-            }
-
-            .slide-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(255, 255, 255, 0.2);
-                border: none;
-                color: white;
-                width: 48px;
-                height: 48px;
-                border-radius: 50%;
-                cursor: pointer;
-                font-size: 22px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                z-index: 10;
-            }
-
-            .slide-btn:hover {
-                background: rgba(255, 255, 255, 0.35);
-                transform: translateY(-50%) scale(1.05);
-            }
-
-            .slide-btn.prev {
-                left: -16px;
-            }
-
-            .slide-btn.next {
-                right: -16px;
-            }
-        }
-
-        /* Notification Banner */
-        .notice-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: #222;
-            /* Dark background */
-            color: #eee;
-            z-index: 9999;
-            display: none;
-            /* Hidden by default */
-            justify-content: center;
-            /* Center the inner container */
-            font-size: 18px;
-            font-weight: 600;
-            font-family: 'Pretendard', sans-serif;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .notice-inner {
-            width: 100%;
-            max-width: 1920px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            box-sizing: border-box;
-        }
-
-        .notice-content {
-            flex: 1;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .notice-bar a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .notice-bar a:hover {
-            text-decoration: underline;
-            color: #6fa8e8;
-        }
-
-        .notice-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        .notice-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .notice-checkbox input {
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .notice-close-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 0 5px;
-            line-height: 1;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        .notice-close-btn:hover {
-            opacity: 1;
-        }
-
-        /* Body adjustment when notice bar is active */
-        body.has-notice .header-bar {
-            top: 40px;
-            /* Shift header down */
-        }
-
-        body.has-notice .popup-overlay {
-            /* Ensure popup stays on top even with notice bar */
-            z-index: 10000;
-        }
-
-        /* Mobile adjustment */
-        @media (max-width: 768px) {
-            .notice-bar {
-                height: 60px;
-                /* Taller for wrapping */
-            }
-
-            .notice-inner {
-                padding: 0 15px;
-                font-size: 15px;
-                flex-direction: row;
-                gap: 10px;
-            }
-
-            .notice-content {
-                text-align: left;
-                justify-content: flex-start;
-                font-size: 12px;
-                line-height: 1.3;
-            }
-
-            .notice-controls {
-                gap: 10px;
-                flex-shrink: 0;
-                font-size: 11px;
-            }
-
-            body.has-notice .header-bar {
-                top: 60px;
+            .countdown-timer {
+                font-size: clamp(40px, 12vw, 80px);
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-circle-container">
-            <div class="loading-logo">
-                <svg fill="none" viewBox="0 0 69 29.0746">
-                    <g>
-                        <path
-                            d="M46.6648 10.6356C46.9544 7.85764 48.883 5.65458 51.3178 5.3178C48.883 4.98101 46.9544 2.77795 46.6648 0C46.3752 2.77795 44.4467 4.98101 42.0119 5.3178C44.4467 5.65458 46.3752 7.85764 46.6648 10.6356Z"
-                            fill="white" />
-                        <path
-                            d="M21.5227 16.8665C21.8445 16.5769 22.1512 15.8755 22.3915 15.2319C22.6897 14.4339 22.887 13.4322 22.887 12.3811C22.887 8.2152 21.2288 6.52697 18.5752 6.31889L0 4.76796L2.18809 9.3371V29.0724H18.8884C21.7586 29.0724 23.5134 26.3523 23.5134 22.1865C23.5134 20.0649 22.7755 17.6881 21.5227 16.8644V16.8665ZM8.56788 11.6024H15.0142C15.795 11.6024 16.4279 12.3725 16.4279 13.3249C16.4279 14.2774 15.795 15.0475 15.0142 15.0475H8.56788V11.6024ZM15.4604 23.791H8.56574V20.3459H15.4604C16.2949 20.3459 16.9727 21.116 16.9727 22.0685C16.9727 23.0209 16.2949 23.791 15.4604 23.791ZM63.592 15.0646H54.9812C54.2604 15.0646 53.7198 14.08 53.7198 13.1576C53.7198 12.2352 54.1961 11.4651 54.8847 11.4651L67.0243 11.4908L69 4.76796L52.0037 6.31889C49.1055 6.51839 47.3615 9.23843 47.3615 13.2799C47.3615 14.035 47.4258 14.7493 47.546 15.4121C48.0758 18.3081 49.7062 20.2387 52.0037 20.2387H60.2841C60.9748 20.2387 61.6549 20.9831 61.6549 22.032C61.6549 23.081 60.9427 23.7889 60.2841 23.7889H47.3615L48.9296 29.0724H63.4182C66.2413 29.0724 68.0604 26.0027 68.0604 21.9612C68.0604 21.3263 68.0111 20.7192 67.9231 20.14C67.4576 17.0339 65.9667 15.0625 63.5877 15.0625L63.592 15.0646ZM44.2767 16.9223C44.6092 16.6241 44.9245 15.8412 45.1691 15.1676C45.4544 14.3803 45.641 13.4043 45.641 12.3832C45.641 8.21734 43.8841 6.32104 41.3292 6.32104H23.8459L24.9443 9.33925V29.0745H41.6446C44.5148 29.0745 46.2696 26.3545 46.2696 22.1886C46.2696 20.0671 45.5316 17.746 44.2788 16.9223H44.2767ZM39.3621 17.9906L32.2829 22.4825C32.0384 22.637 31.7209 22.4611 31.7209 22.1736V13.1898C31.7209 12.9002 32.0405 12.7264 32.2829 12.8809L39.3621 17.3728C39.5895 17.5165 39.5895 17.8469 39.3621 17.9927V17.9906Z"
-                            fill="white" />
-                    </g>
-                </svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- SVG Filter for Clean Edge Distortion (No light streaks) -->
-    <svg style="display: none">
-        <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox">
-            <!-- 1. Create the edge map by blurring the element's shape -->
-            <feGaussianBlur in="SourceAlpha" stdDeviation="20" result="blurMap" />
-
-            <!-- 2. Distort the background using the alpha gradient at the edges -->
-            <!-- Scale controls the strength of the "lens" effect -->
-            <feDisplacementMap in="SourceGraphic" in2="blurMap" scale="30" xChannelSelector="A" yChannelSelector="A" />
-        </filter>
-    </svg>
-
-
-
-    <!-- Notification Banner -->
-    <div id="noticeBar" class="notice-bar">
-        <div class="notice-inner">
-            <div class="notice-content">
-                <span id="noticeText"></span>
-            </div>
-            <div class="notice-controls">
-                <label class="notice-checkbox">
-                    <input type="checkbox" id="noticeDontShow">
-                    <span>오늘 하루 안보기</span>
-                </label>
-                <button class="notice-close-btn" onclick="closeNotice()">✕</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Popup Modal -->
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup-content">
-            <img class="popup-image" id="popupImage" src="" alt="팝업 이미지">
-            <div class="popup-footer">
-                <label class="popup-checkbox">
-                    <input type="checkbox" id="dontShowToday">
-                    <span>오늘 하루 안보기</span>
-                </label>
-                <button class="popup-close-btn" onclick="closePopup()">닫기</button>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
 
-        <!-- Header (flex) -->
-        <header class="header-bar">
-            <!-- Liquid Glass Layers -->
-            <div class="liquidGlass-effect"></div>
-            <div class="liquidGlass-tint"></div>
-            <div class="liquidGlass-shine"></div>
-
-            <div class="header-left" style="z-index: 10;">
-                <div class="logo">
-                    <svg fill="none" viewBox="0 0 69 29.0746">
-                        <g>
-                            <path
-                                d="M46.6648 10.6356C46.9544 7.85764 48.883 5.65458 51.3178 5.3178C48.883 4.98101 46.9544 2.77795 46.6648 0C46.3752 2.77795 44.4467 4.98101 42.0119 5.3178C44.4467 5.65458 46.3752 7.85764 46.6648 10.6356Z"
-                                fill="white" />
-                            <path
-                                d="M21.5227 16.8665C21.8445 16.5769 22.1512 15.8755 22.3915 15.2319C22.6897 14.4339 22.887 13.4322 22.887 12.3811C22.887 8.2152 21.2288 6.52697 18.5752 6.31889L0 4.76796L2.18809 9.3371V29.0724H18.8884C21.7586 29.0724 23.5134 26.3523 23.5134 22.1865C23.5134 20.0649 22.7755 17.6881 21.5227 16.8644V16.8665ZM8.56788 11.6024H15.0142C15.795 11.6024 16.4279 12.3725 16.4279 13.3249C16.4279 14.2774 15.795 15.0475 15.0142 15.0475H8.56788V11.6024ZM15.4604 23.791H8.56574V20.3459H15.4604C16.2949 20.3459 16.9727 21.116 16.9727 22.0685C16.9727 23.0209 16.2949 23.791 15.4604 23.791ZM63.592 15.0646H54.9812C54.2604 15.0646 53.7198 14.08 53.7198 13.1576C53.7198 12.2352 54.1961 11.4651 54.8847 11.4651L67.0243 11.4908L69 4.76796L52.0037 6.31889C49.1055 6.51839 47.3615 9.23843 47.3615 13.2799C47.3615 14.035 47.4258 14.7493 47.546 15.4121C48.0758 18.3081 49.7062 20.2387 52.0037 20.2387H60.2841C60.9748 20.2387 61.6549 20.9831 61.6549 22.032C61.6549 23.081 60.9427 23.7889 60.2841 23.7889H47.3615L48.9296 29.0724H63.4182C66.2413 29.0724 68.0604 26.0027 68.0604 21.9612C68.0604 21.3263 68.0111 20.7192 67.9231 20.14C67.4576 17.0339 65.9667 15.0625 63.5877 15.0625L63.592 15.0646ZM44.2767 16.9223C44.6092 16.6241 44.9245 15.8412 45.1691 15.1676C45.4544 14.3803 45.641 13.4043 45.641 12.3832C45.641 8.21734 43.8841 6.32104 41.3292 6.32104H23.8459L24.9443 9.33925V29.0745H41.6446C44.5148 29.0745 46.2696 26.3545 46.2696 22.1886C46.2696 20.0671 45.5316 17.746 44.2788 16.9223H44.2767ZM39.3621 17.9906L32.2829 22.4825C32.0384 22.637 31.7209 22.4611 31.7209 22.1736V13.1898C31.7209 12.9002 32.0405 12.7264 32.2829 12.8809L39.3621 17.3728C39.5895 17.5165 39.5895 17.8469 39.3621 17.9927V17.9906Z"
-                                fill="white" />
-                        </g>
-                    </svg>
-                </div>
-                <p class="subtitle">BANGEOJIN BROADCASTING SYSTEM</p>
-                <button class="hamburger" onclick="toggleMenu()">☰</button>
-            </div>
-
-            <nav class="nav" aria-label="main navigation">
-                <button class="snap-target" onclick="handleNav('소개')">소개</button>
-                <button class="snap-target" onclick="handleNav('유튜브')">유튜브</button>
-                <button class="snap-target" onclick="handleNav('인스타그램')">인스타그램</button>
-            </nav>
-        </header>
-
-        <div class="main-c1">
-            <!-- Main Box -->
-            <div class="main-box">
-                <video autoplay muted loop playsinline>
+        <!-- HERO: Video + Countdown + Buttons -->
+        <div class="hero-section anim-hidden" id="heroSection">
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline preload="metadata">
                     <source src="v9.mp4" type="video/mp4">
                 </video>
-                <div class="main-text">
-                    <div class="main-text-content">
-                        <p><span class="bold">방송</span>의 힘으로</p>
-                        <p>더 <span class="bold">즐거운 학교생활</span>을 만들어 갑니다</p>
-                    </div>
-                    <div class="main-buttons">
-                        <button class="main-btn magnetic snap-target" onclick="handleApply()">최종 결과 발표 확인</button>
-                        <button class="main-btn magnetic snap-target" onclick="handleYoutube()">BBS YOUTUBE</button>
-                    </div>
+
+                <!-- COUNTDOWN (center of video) -->
+                <div class="hero-countdown" id="heroCountdown">
+                    <span class="countdown-label">결과 발표까지</span>
+                    <span class="countdown-timer" id="countdownTimer">--:--:--</span>
+                    <span class="countdown-sub">2026. 03. 20 PM 3:40</span>
                 </div>
             </div>
 
-            <div class="arrow-right snap-target">
-                <svg fill="none" viewBox="0 0 39.084 39.1309">
-                    <g>
-                        <line stroke="white" stroke-width="7" x1="5.58962" x2="36.1033" y1="33.5448" y2="2.54472" />
-                        <line stroke="white" stroke-width="7" x1="3.08398" x2="39.084" y1="3.5" y2="3.5" />
-                        <line stroke="white" stroke-width="7" x1="35.584" x2="35.584" y1="36" />
-                        <path d="M3.58879 32.1668L6.96412 35.5422L3.39199 35.739L3.58879 32.1668Z" fill="black"
-                            stroke="white" />
-                    </g>
-                </svg>
-            </div>
-
-            <div class="arrow-left snap-target">
-
-                <svg fill="none" viewBox="0 0 36 36" style="transform: rotate(180deg);">
-                    <g>
-                        <line stroke="white" stroke-width="7" x2="36" y1="3.5" y2="3.5" />
-                        <line stroke="white" stroke-width="7" x1="32.5" x2="32.5" y1="36" />
-                    </g>
-                </svg>
+            <div class="hero-actions">
+                <a href="ss.html" class="btn-result snap-target" id="btnResult">결과 조회하기</a>
+                <a href="home.html" class="btn-home snap-target" id="btnHome" aria-label="홈으로 이동">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M3 12.5L12 4L21 12.5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 11V19.5C5 19.776 5.224 20 5.5 20H9.5V15C9.5 14.448 9.948 14 10.5 14H13.5C14.052 14 14.5 14.448 14.5 15V20H18.5C18.776 20 19 19.776 19 19.5V11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
             </div>
         </div>
-    </div>
 
-    <!-- YouTube RSS Container -->
-    <div class="youtube-container" data-aos="fade-up" data-aos-duration="800">
-        <h2 class="youtube-title">최신 영상</h2>
-        <div class="youtube-wrapper" data-aos="fade-up" data-aos-delay="150">
-            <button class="slide-btn prev" id="prevBtn" onclick="slideVideos('prev')">❮</button>
-            <div class="video-grid" id="videoGrid">
-                <div class="loading-spinner">로딩 중...</div>
-            </div>
-            <button class="slide-btn next" id="nextBtn" onclick="slideVideos('next')">❯</button>
-        </div>
-    </div>
-
-    <!-- BBS Introduction Container -->
-    <div class="bbs-intro-container">
-        <div class="bbs-intro-content">
-            <div class="bbs-intro-image scroll-animate" data-scroll-animate>
-                <img src="3d.webp" alt="BBS 3D Star" class="bbs-star-image">
-            </div>
-            <div class="bbs-intro-text-wrapper">
-                <h2 class="bbs-intro-title scroll-animate delay-1" data-scroll-animate>시대를 앞서는 名門의 열정</h2>
-                <p class="bbs-intro-text scroll-animate delay-2" data-scroll-animate>
-                    BBS에서는 당신의 활동을 지원하기 위해 열정이 넘치는 부원들이 활동하고 있습니다.
-                </p>
-                <div class="bbs-intro-highlights">
-                    <div class="bbs-intro-highlight-card scroll-animate delay-3" data-scroll-animate>
-                        <div class="bbs-intro-highlight-title">EQUIPMENT</div>
-                        <div class="bbs-intro-highlight-text">Qu-16, DM3, EVOLVE-50, RS3 Mini, R8(예정), Dji mini 3 pro등
-                            현업에 쓰이는 장비로 현장을
-                            운영합니다.</div>
-                    </div>
-                    <div class="bbs-intro-highlight-card scroll-animate delay-4" data-scroll-animate>
-                        <div class="bbs-intro-highlight-title">EXPERIENCE</div>
-                        <div class="bbs-intro-highlight-text">당신이 하고 싶은 것이라면 무엇이든지 할 수 있습니다.</div>
-                    </div>
+        <!-- BLUE BANNER -->
+        <div class="blue-banner anim-hidden" id="blueBanner">
+            <div class="banner-top-row">
+                <div class="banner-logo">
+                    <svg fill="none" viewBox="0 0 69 29.0746">
+                        <path d="M46.6648 10.6356C46.9544 7.85764 48.883 5.65458 51.3178 5.3178C48.883 4.98101 46.9544 2.77795 46.6648 0C46.3752 2.77795 44.4467 4.98101 42.0119 5.3178C44.4467 5.65458 46.3752 7.85764 46.6648 10.6356Z" fill="white" />
+                        <path d="M21.5227 16.8665C21.8445 16.5769 22.1512 15.8755 22.3915 15.2319C22.6897 14.4339 22.887 13.4322 22.887 12.3811C22.887 8.2152 21.2288 6.52697 18.5752 6.31889L0 4.76796L2.18809 9.3371V29.0724H18.8884C21.7586 29.0724 23.5134 26.3523 23.5134 22.1865C23.5134 20.0649 22.7755 17.6881 21.5227 16.8644V16.8665ZM8.56788 11.6024H15.0142C15.795 11.6024 16.4279 12.3725 16.4279 13.3249C16.4279 14.2774 15.795 15.0475 15.0142 15.0475H8.56788V11.6024ZM15.4604 23.791H8.56574V20.3459H15.4604C16.2949 20.3459 16.9727 21.116 16.9727 22.0685C16.9727 23.0209 16.2949 23.791 15.4604 23.791ZM63.592 15.0646H54.9812C54.2604 15.0646 53.7198 14.08 53.7198 13.1576C53.7198 12.2352 54.1961 11.4651 54.8847 11.4651L67.0243 11.4908L69 4.76796L52.0037 6.31889C49.1055 6.51839 47.3615 9.23843 47.3615 13.2799C47.3615 14.035 47.4258 14.7493 47.546 15.4121C48.0758 18.3081 49.7062 20.2387 52.0037 20.2387H60.2841C60.9748 20.2387 61.6549 20.9831 61.6549 22.032C61.6549 23.081 60.9427 23.7889 60.2841 23.7889H47.3615L48.9296 29.0724H63.4182C66.2413 29.0724 68.0604 26.0027 68.0604 21.9612C68.0604 21.3263 68.0111 20.7192 67.9231 20.14C67.4576 17.0339 65.9667 15.0625 63.5877 15.0625L63.592 15.0646ZM44.2767 16.9223C44.6092 16.6241 44.9245 15.8412 45.1691 15.1676C45.4544 14.3803 45.641 13.4043 45.641 12.3832C45.641 8.21734 43.8841 6.32104 41.3292 6.32104H23.8459L24.9443 9.33925V29.0745H41.6446C44.5148 29.0745 46.2696 26.3545 46.2696 22.1886C46.2696 20.0671 45.5316 17.746 44.2788 16.9223H44.2767ZM39.3621 17.9906L32.2829 22.4825C32.0384 22.637 31.7209 22.4611 31.7209 22.1736V13.1898C31.7209 12.9002 32.0405 12.7264 32.2829 12.8809L39.3621 17.3728C39.5895 17.5165 39.5895 17.8469 39.3621 17.9927V17.9906Z" fill="white" />
+                    </svg>
                 </div>
+                <img src="slogan.png" alt="BBS 시대를 앞서는 名門의 열정" class="banner-slogan-img" id="sloganImg">
             </div>
-        </div>
-    </div>
 
-    <!-- Department Container -->
-    <div class="department-container" id="introduction">
-        <h2 class="department-title">부서 소개</h2>
-        <div class="department-grid" id="departmentGrid" data-aos="fade-up" data-aos-delay="150">
-            <!-- JavaScript로 부서 데이터가 동적으로 추가됩니다 -->
-        </div>
-    </div>
-
-    <!-- Footer marquee -->
-    <div class="footer-marquee">
-        <div class="footer-marquee-inner">
-            <span class="footer-marquee-text">
-                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-            </span>
-            <span class="footer-marquee-text">
-                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-                BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM • BBS BANGEOJIN HIGH SCHOOL BROADCASTING SYSTEM •
-            </span>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer-overlay">
-        <!-- Footer Info -->
-        <div class="footer-info">
-            <img src="badge.webp" alt="BBS Badge" class="footer-badge">
-            <div class="footer-info-text">
-                <div class="footer-title-wrapper">
-                    <div class="title">방어진고등학교 방송부</div>
+            <div class="banner-bottom-row">
+                <span class="banner-title">31기 모집결과 발표</span>
+                <div class="banner-arrow">
+                    <svg viewBox="0 0 28 28" fill="none">
+                        <path d="M6 22L22 6M22 6H8M22 6V20" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
-                <div class="address">울산광역시 동구 학문로 50 (우 : 44054) 2층</div>
-                <div class="address">Made by <a href="https://mua.co.kr">jK</a></div>
+                <div class="banner-line"></div>
+                <span class="banner-date">2026/03/20</span>
             </div>
         </div>
-
-        <!-- Family Sites -->
-        <div class="footer-family">
-            <select class="family-select" onchange="handleFamilySite(this.value)">
-                <option value="">패밀리 사이트</option>
-                <option value="https://school.use.go.kr/bangeojin-h/M01">방어진고등학교</option>
-            </select>
-        </div>
-    </footer>
     </div>
 
-    <!-- AOS Animation JS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // ===== Countdown Timer =====
+        const TARGET_TIME = new Date('2026-03-20T15:40:00+09:00').getTime();
+        const timerEl = document.getElementById('countdownTimer');
+        const labelEl = document.querySelector('.countdown-label');
 
-    <!-- Liquid Cursor Element -->
-    <div class="liquid-cursor" id="liquidCursor"></div>
+        function updateCountdown() {
+            const now = Date.now();
+            const diff = TARGET_TIME - now;
 
-    <script type="module">
-        // Firebase SDK Imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        // Firebase Configuration (from ss.html)
-        const firebaseConfig = {
-            apiKey: "AIzaSyAQzwnZX0XGJOvFMayWTZRT0EP1HoWAKdQ",
-            authDomain: "bbsforu-4cd31.firebaseapp.com",
-            projectId: "bbsforu-4cd31",
-            storageBucket: "bbsforu-4cd31.firebasestorage.app",
-            messagingSenderId: "126074653228",
-            appId: "1:126074653228:web:604687efe7628b793a9f89",
-            measurementId: "G-MR3NRQB9JP"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // 부서 데이터 (이 배열에서 쉽게 추가/수정/삭제 가능)
-        const departments = [
-            {
-                name: '미디어 에디터',
-                icon: '🎬',
-                description: '영상 촬영과 편집을 통해 방송부의 영상 활동을 주도합니다.'
-            },
-            {
-                name: '컴퓨터 엔지니어',
-                icon: '💻',
-                description: '방송 송출과 기술 운영을 담당합니다. 안정적인 방송 환경을 운영하며 컴퓨터를 관리합니다.'
-            },
-            {
-                name: '음향 엔지니어',
-                icon: '🎧',
-                description: '믹서, 마이크, 오인페, 스피커등을 다루며 학교 행사에서 음향을 책임집니다.'
-            },
-            {
-                name: '디자이너',
-                icon: '🎨',
-                description: '시각적 디자인과 그래픽을 담당합니다. 포스터 제작, 부원증 제작, 썸네일 제작 등 다양한 디자인 작업을 수행합니다.'
-            },
-            {
-                name: '작가',
-                icon: '✍️',
-                description: '시나리오 라이팅과 연출을 담당합니다. 재미있고 창의적인 대본으로 컨텐츠에 핵심적인 역할을 수행합니다.'
-            }
-        ];
-
-        function renderDepartments() {
-            const departmentGrid = document.getElementById('departmentGrid');
-            departmentGrid.innerHTML = '';
-
-            departments.forEach(dept => {
-                const departmentCard = document.createElement('div');
-                departmentCard.className = 'department-card';
-                // 각 부서 카드에 AOS 애니메이션 추가
-                departmentCard.setAttribute('data-aos', 'fade-up');
-                departmentCard.setAttribute('data-aos-duration', '800');
-                departmentCard.innerHTML = `
-                    <div class="department-icon">${dept.icon}</div>
-                    <h3 class="department-name">${dept.name}</h3>
-                    <p class="department-description">${dept.description}</p>
-                `;
-
-                departmentGrid.appendChild(departmentCard);
-            });
-        }
-
-        function toggleMenu() {
-            const nav = document.querySelector('.nav');
-            const hamburger = document.querySelector('.hamburger');
-
-            if (nav.classList.contains('active')) {
-                // 메뉴 닫기 애니메이션
-                nav.style.animation = 'slideUp 0.3s ease forwards';
-                setTimeout(() => {
-                    nav.classList.remove('active');
-                    nav.style.animation = '';
-                }, 300);
-            } else {
-                // 메뉴 열기 애니메이션
-                nav.classList.add('active');
-                nav.style.animation = 'slideDown 0.3s ease forwards';
-            }
-        }
-
-        // Glare Effect
-        const headerBar = document.querySelector('.header-bar');
-        const headerGlare = document.getElementById('headerGlare');
-
-        if (headerBar && headerGlare) {
-            headerBar.addEventListener('mousemove', (e) => {
-                const rect = headerBar.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                headerGlare.style.opacity = '1';
-                headerGlare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 50%)`;
-            });
-
-            headerBar.addEventListener('mouseleave', () => {
-                headerGlare.style.opacity = '0';
-            });
-        }
-
-        // Parallax Motion Logic
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-
-            // 1. BBS Star Parallax (Combined Mouse + Scroll)
-            const starImage = document.querySelector('.bbs-star-image');
-            if (starImage) {
-                const rect = starImage.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-
-                const moveX = (mouseX - centerX) * 0.04;
-                const moveY = (mouseY - centerY) * 0.04;
-
-                // Get scroll progress from dataset
-                const scrollProgress = parseFloat(starImage.dataset.scrollProgress || 0.5);
-                const scrollScale = 0.95 + (scrollProgress * 0.1);
-                const scrollRotate = (scrollProgress - 0.5) * 10;
-
-                starImage.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scrollScale}) rotate(${scrollRotate}deg)`;
-            }
-
-            // 2. Magnetic Buttons pull logic
-            const magneticButtons = document.querySelectorAll('.magnetic');
-            magneticButtons.forEach(btn => {
-                const rect = btn.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-
-                const distX = mouseX - centerX;
-                const distY = mouseY - centerY;
-                const distance = Math.sqrt(distX * distX + distY * distY);
-
-                // If within 45px radius
-                if (distance < 45) {
-                    btn.classList.add('magnetic-active');
-                    const pullX = distX * 0.3;
-                    const pullY = distY * 0.3;
-                    btn.style.transform = `translate(${pullX}px, ${pullY}px)`;
-                } else {
-                    btn.classList.remove('magnetic-active');
-                    btn.style.transform = `translate(0px, 0px)`;
-                }
-            });
-        });
-
-        // Liquid Cursor Logic (Optimized with LERP and translate3d)
-        const liquidCursor = document.getElementById('liquidCursor');
-        let isCursorVisible = false;
-        let mouseX = 0, mouseY = 0; // Target position
-        let cursorX = 0, cursorY = 0; // Current lerped position
-
-        const lerp = (start, end, amount) => {
-            return (1 - amount) * start + amount * end;
-        };
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isCursorVisible) {
-                liquidCursor.style.display = 'block';
-                isCursorVisible = true;
-                cursorX = e.clientX;
-                cursorY = e.clientY;
-            }
-
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            const snapTarget = e.target.closest('.snap-target');
-
-            if (snapTarget) {
-                const rect = snapTarget.getBoundingClientRect();
-                liquidCursor.classList.add('snapped');
-
-                // Set cursor targets to target center
-                mouseX = rect.left + rect.width / 2;
-                mouseY = rect.top + rect.height / 2;
-
-                liquidCursor.style.width = (rect.width + 12) + 'px';
-                liquidCursor.style.height = (rect.height + 12) + 'px';
-            } else {
-                liquidCursor.classList.remove('snapped');
-                liquidCursor.style.width = '32px';
-                liquidCursor.style.height = '32px';
-                liquidCursor.style.borderRadius = '50%';
-            }
-        });
-
-        // Universal Hover Scale Logic
-        document.addEventListener('mouseover', (e) => {
-            const isClickable = e.target.closest('button, a, select, input, .video-card, .arrow-right, .arrow-left');
-            if (isClickable) {
-                liquidCursor.classList.add('hovering');
-            }
-        });
-
-        document.addEventListener('mouseout', (e) => {
-            const isClickable = e.target.closest('button, a, select, input, .video-card, .arrow-right, .arrow-left');
-            if (isClickable) {
-                liquidCursor.classList.remove('hovering');
-            }
-        });
-
-        // Loop for smooth follow effect
-        function updateCursorLoop() {
-            // Snappy follow speed: significantly faster for "main cursor" feel
-            const lerpAmount = liquidCursor.classList.contains('snapped') ? 0.35 : 0.45;
-
-            cursorX = lerp(cursorX, mouseX, lerpAmount);
-            cursorY = lerp(cursorY, mouseY, lerpAmount);
-
-            // translate3d for GPU acceleration + translate(-50%, -50%) to center the element
-            liquidCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-
-            requestAnimationFrame(updateCursorLoop);
-        }
-        requestAnimationFrame(updateCursorLoop);
-
-        document.addEventListener('mouseleave', () => {
-            liquidCursor.style.display = 'none';
-            isCursorVisible = false;
-        });
-
-        // 드래그 기능 (마우스 + 터치 지원)
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        let isDragged = false;
-
-        const videoGrid = document.getElementById('videoGrid');
-
-        function onDragStart(e) {
-            isDown = true;
-            isDragged = false;
-            videoGrid.classList.add('dragging');
-            startX = (e.pageX || e.touches[0].pageX) - videoGrid.offsetLeft;
-            scrollLeft = videoGrid.scrollLeft;
-        }
-
-        function onDragEnd() {
-            isDown = false;
-            videoGrid.classList.remove('dragging');
-        }
-
-        function onDrag(e) {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = (e.pageX || e.touches[0].pageX) - videoGrid.offsetLeft;
-            const walk = (x - startX) * 1.5; // 드래그 민감도
-            if (Math.abs(walk) > 5) {
-                isDragged = true; // 5px 이상 이동하면 드래그로 판단
-            }
-            videoGrid.scrollLeft = scrollLeft - walk;
-        }
-
-        // 마우스 이벤트
-        videoGrid.addEventListener('mousedown', onDragStart);
-        videoGrid.addEventListener('mouseleave', onDragEnd);
-        videoGrid.addEventListener('mouseup', onDragEnd);
-        videoGrid.addEventListener('mousemove', onDrag);
-
-        // 터치 이벤트 (모바일/태블릿)
-        videoGrid.addEventListener('touchstart', onDragStart);
-        videoGrid.addEventListener('touchend', onDragEnd);
-        videoGrid.addEventListener('touchmove', onDrag);
-
-        // 드래그 후 클릭 방지
-        document.querySelectorAll('.video-card').forEach(card => {
-            card.addEventListener('click', function (e) {
-                if (isDragged) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-            }, true);
-        });
-
-        // 메뉴 항목 클릭시 메뉴 닫기 (애니메이션 포함)
-        document.querySelectorAll('.nav button').forEach(button => {
-            button.addEventListener('click', function () {
-                const nav = document.querySelector('.nav');
-                nav.style.animation = 'slideUp 0.3s ease forwards';
-                setTimeout(() => {
-                    nav.classList.remove('active');
-                    nav.style.animation = '';
-                }, 300);
-            });
-        });
-
-        // 화면 크기 변경시 메뉴 상태 초기화
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 768) {
-                const nav = document.querySelector('.nav');
-                nav.classList.remove('active');
-                nav.style.animation = '';
-            }
-        });
-
-        function handleNav(section) {
-            // 메뉴 닫기
-            const nav = document.querySelector('.nav');
-            if (nav.classList.contains('active')) {
-                nav.classList.remove('active');
-            }
-
-            if (section === '소개') {
-                // 부서 소개 컨테이너로 스크롤
-                const introSection = document.getElementById('introduction');
-                if (introSection) {
-                    introSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            } else if (section === '유튜브') {
-                // YouTube 채널로 이동 (URL은 필요에 따라 수정)
-                window.open('https://www.youtube.com/channel/UCzaRFkwvHRieGLq65cuXAjA', '_blank');
-            } else if (section === '인스타그램') {
-                // 방어진고등학교 웹사이트로 이동 (URL은 필요에 따라 수정)
-                window.open('https://www.instagram.com/bbs.official_onair/', '_blank');
-            }
-        }
-
-        function handleApply() {
-            alert('조회 기간이 아닙니다.');
-            // window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSd_7xmP3L4Bz1aAx_n1BYJZid4a7xwe7ZlMoxc7jwHDWzeSmw/viewform';
-        }
-
-        function handleYoutube() {
-            window.open('https://www.youtube.com/channel/UCzaRFkwvHRieGLq65cuXAjA', '_blank');
-        }
-
-        function handleFamilySite(url) {
-            if (url) {
-                window.open(url, '_blank');
-                // 선택 초기화
-                document.querySelector('.family-select').value = '';
-            }
-        }
-
-        // 팝업 관련 함수
-        async function showPopup() {
-            // 오늘 하루 안보기 설정 확인
-            const today = new Date().toDateString();
-            const dontShowToday = localStorage.getItem('popupDontShowToday');
-
-            if (dontShowToday === today) {
-                return; // 오늘 이미 안본다고 설정했으면 표시하지 않음
-            }
-
-            try {
-                // Firestore에서 팝업 설정 가져오기
-                const docRef = doc(db, "settings", "popup");
-                const docSnap = await getDoc(docRef);
-
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-
-                    // isActive가 true이고 imageUrl이 있을 때만 표시
-                    if (data.isActive && data.imageUrl) {
-                        const popupImage = document.getElementById('popupImage');
-                        popupImage.src = data.imageUrl;
-
-                        const popupOverlay = document.getElementById('popupOverlay');
-                        popupOverlay.classList.add('active');
-                    }
-                } else {
-                    console.log("No popup settings found in Firestore.");
-                }
-            } catch (error) {
-                console.error("Error fetching popup settings:", error);
-            }
-        }
-
-        // 공지바 관련 함수
-        async function showNotice() {
-            // 오늘 하루 안보기 체크 확인
-            const today = new Date().toDateString();
-            const dontShowNotice = localStorage.getItem('noticeDontShowToday');
-
-            if (dontShowNotice === today) {
+            if (diff <= 0) {
+                labelEl.textContent = '결과 발표';
+                timerEl.textContent = '조회 가능';
+                timerEl.classList.add('ended');
                 return;
             }
 
-            try {
-                const docRef = doc(db, "settings", "notice");
-                const docSnap = await getDoc(docRef);
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-
-                    if (data.isActive && data.message) {
-                        const noticeBar = document.getElementById('noticeBar');
-                        const noticeText = document.getElementById('noticeText');
-
-                        // URL이 있으면 링크로 감싸기
-                        if (data.url && data.url.trim() !== "") {
-                            noticeText.innerHTML = `<a href="${data.url}" target="_blank">${data.message} <span>↗</span></a>`;
-                        } else {
-                            noticeText.textContent = data.message;
-                        }
-
-                        // 표시 및 스타일 조정
-                        noticeBar.style.display = 'flex';
-                        document.body.classList.add('has-notice');
-                    }
-                }
-            } catch (error) {
-                console.error("Error fetching notice settings:", error);
-            }
+            timerEl.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
 
-        // 공지바 닫기 함수
-        window.closeNotice = function () {
-            const noticeBar = document.getElementById('noticeBar');
-            const dontShowCheckbox = document.getElementById('noticeDontShow');
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
 
-            if (dontShowCheckbox && dontShowCheckbox.checked) {
-                const today = new Date().toDateString();
-                localStorage.setItem('noticeDontShowToday', today);
-            }
+        // ===== Entry Animation =====
+        document.addEventListener('DOMContentLoaded', () => {
+            const hero = document.getElementById('heroSection');
+            const banner = document.getElementById('blueBanner');
 
-            noticeBar.style.display = 'none';
-            document.body.classList.remove('has-notice');
-        }
-
-        // Make closePopup globally available (adding it to window) since it's called from HTML
-        window.closePopup = function () {
-            const popupOverlay = document.getElementById('popupOverlay');
-            const dontShowCheckbox = document.getElementById('dontShowToday');
-
-            // 오늘 하루 안보기 체크 여부 확인
-            if (dontShowCheckbox.checked) {
-                const today = new Date().toDateString();
-                localStorage.setItem('popupDontShowToday', today);
-            }
-
-            popupOverlay.classList.remove('active');
-        }
-
-        // Handle apply / youtube / nav functions globally
-        window.handleApply = handleApply;
-        window.handleYoutube = handleYoutube;
-        window.handleNav = handleNav;
-        window.handleFamilySite = handleFamilySite;
-        window.toggleMenu = toggleMenu;
-        window.slideVideos = slideVideos;
-
-
-        // 오버레이 클릭 시 팝업 닫기
-        document.addEventListener('DOMContentLoaded', function () {
-            const popupOverlay = document.getElementById('popupOverlay');
-            if (popupOverlay) {
-                popupOverlay.addEventListener('click', function (e) {
-                    if (e.target === popupOverlay) {
-                        closePopup();
-                    }
-                });
-            }
-
-            // 페이지 로드 시 팝업 및 공지바 표시
-            showPopup();
-            showNotice();
-
-            // AOS 초기화
-            if (window.AOS) {
-                AOS.init({
-                    once: true,           // 한 번만 애니메이션
-                    offset: 80,          // 트리거 오프셋
-                    duration: 700,       // 기본 지속시간
-                    easing: 'ease-out'   // 기본 이징
-                });
-            }
-        });
-
-        // 슬라이드 함수
-        function slideVideos(direction) {
-            const videoGrid = document.getElementById('videoGrid');
-            const scrollAmount = 320; // 카드 너비(280px) + 갭(20px) + 여유
-
-            if (direction === 'next') {
-                videoGrid.scrollLeft += scrollAmount;
-            } else {
-                videoGrid.scrollLeft -= scrollAmount;
-            }
-        }
-
-        // YouTube RSS Loader
-        async function loadYouTubeVideos() {
-            try {
-                // YouTube 채널 ID (여기에 유튜브 채널 ID를 입력하세요)
-                const YOUTUBE_CHANNEL_ID = 'UCzaRFkwvHRieGLq65cuXAjA'; // Google Developers 채널 (예시)
-                const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
-
-                // rss2json API를 사용하여 RSS를 JSON으로 변환
-                const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
-
-                const response = await fetch(API_URL);
-                const data = await response.json();
-
-                if (data.items && data.items.length > 0) {
-                    displayVideos(data.items.slice(0, 12)); // 최신 12개만 표시
-                } else {
-                    showError('영상을 찾을 수 없습니다.');
-                }
-            } catch (error) {
-                console.error('Error loading videos:', error);
-                showError('영상을 불러올 수 없습니다.');
-            }
-        }
-
-        function displayVideos(items) {
-            const videoGrid = document.getElementById('videoGrid');
-            videoGrid.innerHTML = '';
-
-            items.forEach(item => {
-                // YouTube 영상 URL과 섬네일 추출
-                const videoId = extractVideoId(item.link);
-                const thumbnail = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-                const title = item.title;
-                const pubDate = new Date(item.pubDate).toLocaleDateString('ko-KR');
-
-                const videoCard = document.createElement('div');
-                videoCard.className = 'video-card';
-                videoCard.onclick = () => window.open(item.link, '_blank');
-
-                videoCard.innerHTML = `
-                    <img src="${thumbnail}" alt="${title}" class="video-thumbnail">
-                    <div class="video-info">
-                        <h3 class="video-title">${title}</h3>
-                        <p class="video-date">${pubDate}</p>
-                    </div>
-                `;
-
-                videoGrid.appendChild(videoCard);
-            });
-        }
-
-        function extractVideoId(url) {
-            // YouTube URL에서 비디오 ID 추출
-            const match = url.match(/v=([a-zA-Z0-9_-]{11})/);
-            return match ? match[1] : '';
-        }
-
-        function showError(message) {
-            const videoGrid = document.getElementById('videoGrid');
-            videoGrid.innerHTML = `<div style="color: #ff6b6b; grid-column: 1/-1; text-align: center; padding: 40px;">${message}</div>`;
-        }
-
-        // 페이지 로드 시 영상/부서 정보 및 스크롤 애니메이션 초기화
-        document.addEventListener('DOMContentLoaded', function () {
-            // Loading Screen: OneDirection Style Reveal Animation
-            // Loading Screen: Transparent Hole Reveal (Mask)
-            const loadingScreen = document.getElementById('loadingScreen');
-            const loadingLogo = document.querySelector('.loading-logo');
-
-            // Force initial opacity
-            loadingLogo.style.opacity = '0';
-
-            // Mask animation logic object
-            const maskEffect = { radius: 0 };
-
-            const tl = anime.timeline({
-                easing: 'easeOutExpo',
-                complete: () => {
-                    loadingScreen.style.display = 'none';
-                    loadingScreen.style.maskImage = 'none';
-                    loadingScreen.style.webkitMaskImage = 'none';
-                }
-            });
-
-            tl.add({
-                targets: loadingLogo,
+            anime({
+                targets: hero,
                 opacity: [0, 1],
-                scale: [0.8, 1],
-                duration: 800,
+                scale: [0.96, 1],
+                duration: 900,
                 delay: 100,
-                easing: 'easeOutQuart'
-            })
-                .add({
-                    targets: maskEffect,
-                    radius: 200, // 0% to 200% radius
-                    duration: 400,
-                    easing: 'easeInQuad',
-                    update: (anim) => {
-                        const r = maskEffect.radius;
-                        const gradient = `radial-gradient(circle, transparent ${r}%, #000 ${r + 5}%)`;
-                        loadingScreen.style.maskImage = gradient;
-                        loadingScreen.style.webkitMaskImage = gradient;
-                    }
-                }, '-=200'); // Overlap with logo for speed
-
-            loadYouTubeVideos();
-            renderDepartments();
-
-            // Header Scroll Effect
-            const header = document.querySelector('.header-bar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+                easing: 'easeOutCubic',
             });
 
-            // Scroll reveal for elements
-            const scrollTargets = document.querySelectorAll('[data-scroll-animate]');
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        // io.unobserve(entry.target); // Keep observing if we want to reset (optional)
-                    }
-                });
-            }, {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px' // Trigger slightly before it hits the bottom
+            // Countdown fade in
+            anime({
+                targets: '.hero-countdown',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800,
+                delay: 300,
+                easing: 'easeOutCubic',
             });
-            scrollTargets.forEach(el => io.observe(el));
 
-            // Scroll-Linked Parallax for Intro Section
-            const introContainer = document.querySelector('.bbs-intro-container');
-            const introStar = document.querySelector('.bbs-star-image');
+            anime({
+                targets: banner,
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 800,
+                delay: 400,
+                easing: 'easeOutCubic',
+            });
 
-            if (introContainer && introStar) {
-                window.addEventListener('scroll', () => {
-                    const rect = introContainer.getBoundingClientRect();
-                    const viewHeight = window.innerHeight;
+            anime({
+                targets: [document.getElementById('btnResult'), document.getElementById('btnHome')],
+                opacity: [0, 1],
+                translateY: [12, 0],
+                duration: 500,
+                delay: anime.stagger(120, { start: 700 }),
+                easing: 'easeOutQuad',
+            });
 
-                    // Calculate how much of the container is in view (0 to 1)
-                    if (rect.top < viewHeight && rect.bottom > 0) {
-                        const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
-                        const clampedProgress = Math.max(0, Math.min(1, progress));
-
-                        // Apply subtle scroll-linked transform
-                        // Move from -30px to 30px, scale from 0.95 to 1.05
-                        const translateY = (clampedProgress - 0.5) * 60;
-                        const scale = 0.95 + (clampedProgress * 0.1);
-
-                        // Merging with the mouse parallax if necessary, but here we focus on scroll
-                        // If mouse parallax is also active, we should store these and combine them.
-                        // For now, let's keep it simple.
-                        introStar.dataset.scrollProgress = clampedProgress;
-                    }
-                });
-            }
-        });
-
-        // ============================================================
-        // ANIME.JS ANIMATIONS - Advanced Animation System
-        // ============================================================
-
-        document.addEventListener('DOMContentLoaded', function () {
-            // 초기 상태 설정 - 애니메이션 시작 전 요소들 숨기기
-            const headerLeft = document.querySelector('.header-left');
-            const nav = document.querySelector('.nav');
-            const mainBox = document.querySelector('.main-box');
-            const mainTextContent = document.querySelector('.main-text-content');
-
-            // 초기 스타일 설정
-            if (headerLeft) headerLeft.style.opacity = '0';
-            if (nav) nav.style.opacity = '0';
-            if (mainBox) mainBox.style.opacity = '0';
-
-            // ============================================================
-            // 1. 초기 로딩 애니메이션 (페이지 진입 시)
-            // ============================================================
-            const loadingTimeline = anime.timeline({
+            anime({
+                targets: '.banner-title, .banner-arrow, .banner-line, .banner-date',
+                opacity: [0, 1],
+                translateX: [-20, 0],
+                duration: 600,
+                delay: anime.stagger(80, { start: 600 }),
                 easing: 'easeOutExpo',
             });
 
-            // 헤더 왼쪽 (로고 + 서브타이틀) 등장
-            loadingTimeline.add({
-                targets: '.header-left',
+            anime({
+                targets: '.banner-logo, #sloganImg',
                 opacity: [0, 1],
-                translateY: [-30, 0],
-                duration: 800,
+                translateY: [-10, 0],
+                duration: 500,
+                delay: anime.stagger(100, { start: 500 }),
+                easing: 'easeOutQuad',
             });
-
-            // 네비게이션 등장
-            loadingTimeline.add({
-                targets: '.nav',
-                opacity: [0, 1],
-                translateY: [-20, 0],
-                duration: 600,
-            }, '-=400');
-
-            // 메인 박스 등장 (스케일 + 페이드)
-            loadingTimeline.add({
-                targets: '.main-box',
-                opacity: [0, 1],
-                scale: [0.92, 1],
-                duration: 1000,
-                easing: 'easeOutCubic',
-            }, '-=300');
-
-            // ============================================================
-            // 2. 히어로 텍스트 애니메이션 (글자별 등장) - HTML 태그 보존
-            // ============================================================
-            setTimeout(() => {
-                const textElements = document.querySelectorAll('.main-text-content p');
-
-                // 텍스트 노드를 재귀적으로 탐색하여 글자별 span으로 감싸는 함수
-                function wrapTextNodes(element) {
-                    const nodes = Array.from(element.childNodes);
-                    nodes.forEach(node => {
-                        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-                            const fragment = document.createDocumentFragment();
-                            node.textContent.split('').forEach(char => {
-                                if (char === ' ') {
-                                    fragment.appendChild(document.createTextNode(' '));
-                                } else {
-                                    const span = document.createElement('span');
-                                    span.className = 'anime-letter';
-                                    span.style.display = 'inline-block';
-                                    span.style.opacity = '0';
-                                    span.textContent = char;
-                                    fragment.appendChild(span);
-                                }
-                            });
-                            node.parentNode.replaceChild(fragment, node);
-                        } else if (node.nodeType === Node.ELEMENT_NODE) {
-                            // 자식 요소도 재귀적으로 처리 (span.bold 등)
-                            wrapTextNodes(node);
-                        }
-                    });
-                }
-
-                textElements.forEach((el, index) => {
-                    wrapTextNodes(el);
-
-                    // 글자별 애니메이션
-                    anime({
-                        targets: el.querySelectorAll('.anime-letter'),
-                        opacity: [0, 1],
-                        translateY: [20, 0],
-                        rotateX: [-40, 0],
-                        duration: 800,
-                        delay: anime.stagger(30, { start: 400 + (index * 300) }),
-                        easing: 'easeOutExpo',
-                    });
-                });
-            }, 600);
-
-            // ============================================================
-            // 3. 스크롤 기반 애니메이션 - YouTube 타이틀
-            // ============================================================
-            const youtubeTitle = document.querySelector('.youtube-title');
-            if (youtubeTitle) {
-                const ytObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            anime({
-                                targets: '.youtube-title',
-                                opacity: [0, 1],
-                                translateY: [40, 0],
-                                duration: 800,
-                                easing: 'easeOutExpo',
-                            });
-                            ytObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.2 });
-                youtubeTitle.style.opacity = '0';
-                ytObserver.observe(youtubeTitle);
-            }
-
-            // ============================================================
-            // 4. 스크롤 기반 - 인트로 섹션 패럴랙스 & 텍스트 애니메이션
-            // ============================================================
-            const introSection = document.querySelector('.bbs-intro-container');
-            const introTitle = document.querySelector('.bbs-intro-title');
-            const introText = document.querySelector('.bbs-intro-text');
-            const highlightCards = document.querySelectorAll('.bbs-intro-highlight-card');
-
-            if (introSection) {
-                let introAnimated = false;
-
-                const introObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !introAnimated) {
-                            introAnimated = true;
-
-                            // 인트로 타이틀 애니메이션
-                            anime({
-                                targets: '.bbs-intro-title',
-                                opacity: [0, 1],
-                                translateX: [-60, 0],
-                                duration: 1000,
-                                easing: 'easeOutExpo',
-                            });
-
-                            // 인트로 텍스트 애니메이션
-                            anime({
-                                targets: '.bbs-intro-text',
-                                opacity: [0, 1],
-                                translateX: [-40, 0],
-                                duration: 1000,
-                                delay: 200,
-                                easing: 'easeOutExpo',
-                            });
-
-                            // 하이라이트 카드들 스태거 애니메이션
-                            anime({
-                                targets: '.bbs-intro-highlight-card',
-                                opacity: [0, 1],
-                                translateY: [30, 0],
-                                scale: [0.9, 1],
-                                duration: 800,
-                                delay: anime.stagger(150, { start: 400 }),
-                                easing: 'easeOutExpo',
-                            });
-                        }
-                    });
-                }, { threshold: 0.15 });
-
-                introObserver.observe(introSection);
-            }
-
-            // ============================================================
-            // 5. 스크롤 진행률 연동 - BBS 스타 이미지 회전 & 스케일
-            // ============================================================
-            const bbsStar = document.querySelector('.bbs-star-image');
-            if (bbsStar && introSection) {
-                let ticking = false;
-
-                window.addEventListener('scroll', () => {
-                    if (!ticking) {
-                        requestAnimationFrame(() => {
-                            const rect = introSection.getBoundingClientRect();
-                            const viewHeight = window.innerHeight;
-
-                            if (rect.top < viewHeight && rect.bottom > 0) {
-                                const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
-                                const clampedProgress = Math.max(0, Math.min(1, progress));
-
-                                // 스크롤 진행률에 따른 회전 및 스케일
-                                const rotation = (clampedProgress - 0.5) * 25; // -12.5 ~ 12.5 degrees
-                                const scale = 0.85 + (clampedProgress * 0.2); // 0.85 ~ 1.05
-                                const translateY = (1 - clampedProgress) * 30;
-
-                                anime.set(bbsStar, {
-                                    rotate: rotation,
-                                    scale: scale,
-                                    translateY: translateY,
-                                });
-                            }
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                });
-            }
-
-            // ============================================================
-            // 6. 부서 카드 스태거 애니메이션 (스크롤 트리거)
-            // ============================================================
-            const deptSection = document.querySelector('.department-container');
-            if (deptSection) {
-                let deptAnimated = false;
-
-                const deptObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !deptAnimated) {
-                            deptAnimated = true;
-
-                            // 부서 타이틀
-                            anime({
-                                targets: '.department-title',
-                                opacity: [0, 1],
-                                translateX: [-50, 0],
-                                duration: 800,
-                                easing: 'easeOutExpo',
-                            });
-
-                            // 부서 카드들 그리드 웨이브 효과
-                            anime({
-                                targets: '.department-card',
-                                opacity: [0, 1],
-                                translateY: [60, 0],
-                                scale: [0.8, 1],
-                                rotate: [-3, 0],
-                                duration: 800,
-                                delay: anime.stagger(100, {
-                                    grid: [5, 1],
-                                    from: 'first'
-                                }),
-                                easing: 'easeOutExpo',
-                            });
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                // 초기 상태 설정
-                document.querySelectorAll('.department-card').forEach(card => {
-                    card.style.opacity = '0';
-                });
-                document.querySelector('.department-title').style.opacity = '0';
-
-                deptObserver.observe(deptSection);
-            }
-
-            // ============================================================
-            // 7. YouTube 비디오 카드 로드 애니메이션
-            // ============================================================
-            // MutationObserver로 동적 로드되는 비디오 카드 감지
-            const videoGrid = document.getElementById('videoGrid');
-            if (videoGrid) {
-                const videoMutationObserver = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        if (mutation.addedNodes.length > 0) {
-                            const newCards = Array.from(mutation.addedNodes).filter(
-                                node => node.classList && node.classList.contains('video-card')
-                            );
-
-                            if (newCards.length > 0) {
-                                anime({
-                                    targets: newCards,
-                                    opacity: [0, 1],
-                                    translateY: [15, 0],
-                                    scale: [0.95, 1],
-                                    duration: 200,
-                                    delay: anime.stagger(10),
-                                    easing: 'easeOutCubic',
-                                });
-                            }
-                        }
-                    });
-                });
-
-                videoMutationObserver.observe(videoGrid, { childList: true });
-            }
-
-            // ============================================================
-            // 8. 푸터 호버 애니메이션
-            // ============================================================
-            const footerBadge = document.querySelector('.footer-badge');
-            if (footerBadge) {
-                footerBadge.addEventListener('mouseenter', () => {
-                    anime({
-                        targets: footerBadge,
-                        rotate: [0, 360],
-                        scale: [1, 1.1],
-                        duration: 600,
-                        easing: 'easeOutElastic(1, .6)',
-                    });
-                });
-
-                footerBadge.addEventListener('mouseleave', () => {
-                    anime({
-                        targets: footerBadge,
-                        scale: [1.1, 1],
-                        duration: 300,
-                        easing: 'easeOutQuad',
-                    });
-                });
-            }
-
-            // ============================================================
-            // 9. 메인 버튼 호버 진동 효과
-            // ============================================================
-            document.querySelectorAll('.main-btn').forEach(btn => {
-                btn.addEventListener('mouseenter', () => {
-                    anime({
-                        targets: btn,
-                        scale: [1, 1.05],
-                        duration: 200,
-                        easing: 'easeOutQuad',
-                    });
-                });
-
-                btn.addEventListener('mouseleave', () => {
-                    anime({
-                        targets: btn,
-                        scale: [1.05, 1],
-                        duration: 200,
-                        easing: 'easeOutQuad',
-                    });
-                });
-            });
-
-            console.log('🎬 Anime.js animations initialized successfully!');
         });
     </script>
 </body>
